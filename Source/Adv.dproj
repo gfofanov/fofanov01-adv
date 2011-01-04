@@ -1,0 +1,105 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{fcc13b28-b6aa-4741-b23c-e36e52ea0dfa}</ProjectGuid>
+    <MainSource>Adv.dpr</MainSource>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>..\Exe\Adv.exe</DCC_DependencyCheckOutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_ExeOutput>../Exe</DCC_ExeOutput>
+    <DCC_DcuOutput>../Exe</DCC_DcuOutput>
+    <DCC_ObjOutput>../Exe</DCC_ObjOutput>
+    <DCC_HppOutput>../Exe</DCC_HppOutput>
+    <DCC_UnitSearchPath>$(DELPHI)/Rus</DCC_UnitSearchPath>
+    <DCC_ResourcePath>$(DELPHI)/Rus</DCC_ResourcePath>
+    <DCC_ObjPath>$(DELPHI)/Rus</DCC_ObjPath>
+    <DCC_IncludePath>$(DELPHI)/Rus</DCC_IncludePath>
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_ExeOutput>../Exe</DCC_ExeOutput>
+    <DCC_DcuOutput>../Exe</DCC_DcuOutput>
+    <DCC_ObjOutput>../Exe</DCC_ObjOutput>
+    <DCC_HppOutput>../Exe</DCC_HppOutput>
+    <DCC_UnitSearchPath>$(DELPHI)/Rus</DCC_UnitSearchPath>
+    <DCC_ResourcePath>$(DELPHI)/Rus</DCC_ResourcePath>
+    <DCC_ObjPath>$(DELPHI)/Rus</DCC_ObjPath>
+    <DCC_IncludePath>$(DELPHI)/Rus</DCC_IncludePath>
+    <DCC_Define>DEBUG</DCC_Define>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType>VCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Language><Language Name="RootDir">D:\Program Files\Borland\Delphi6\Bin\</Language></Language><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1049</VersionInfo><VersionInfo Name="CodePage">1251</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">Adv.dpr</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="Adv.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="DataModule.pas">
+      <Form>dm</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="fg_Const.pas" />
+    <DCCReference Include="fg_Util.pas" />
+    <DCCReference Include="Filters\FilterMaterial.pas">
+      <Form>frmFilterMaterial</Form>
+    </DCCReference>
+    <DCCReference Include="Filters\FilterMeasure.pas">
+      <Form>frmFilterMeasure</Form>
+    </DCCReference>
+    <DCCReference Include="Main.pas">
+      <Form>frmMain</Form>
+    </DCCReference>
+    <DCCReference Include="Parent\BaseDualList.pas">
+      <Form>frmBaseDualList</Form>
+    </DCCReference>
+    <DCCReference Include="Parent\BaseEditForm.pas">
+      <Form>frmBaseEditForm</Form>
+    </DCCReference>
+    <DCCReference Include="Parent\BaseList.pas">
+      <Form>frmBaseList</Form>
+    </DCCReference>
+    <DCCReference Include="Parent\BaseSimpleFilter.pas">
+      <Form>frmBaseSimpleFilter</Form>
+    </DCCReference>
+    <DCCReference Include="Parent\BaseTripleList.pas">
+      <Form>frmBaseTripleList</Form>
+    </DCCReference>
+    <DCCReference Include="Parent\ParentMat_Store.pas">
+      <Form>frmParentMat_Store</Form>
+    </DCCReference>
+    <DCCReference Include="Reports\Reports.pas">
+      <Form>dmReport</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="Second_Start.pas" />
+    <DCCReference Include="SetupColumns.pas">
+      <Form>frmSetupColumns</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\edtSprDept.pas">
+      <Form>frmEdtSprDept</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\SprDept.pas">
+      <Form>frmSprDept</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\SprMaterial.pas">
+      <Form>frmSprMaterial</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\SprMeasure.pas">
+      <Form>frmSprMeasure</Form>
+    </DCCReference>
+    <DCCReference Include="Users.pas">
+      <Form>frmUsers</Form>
+    </DCCReference>
+  </ItemGroup>
+</Project>
