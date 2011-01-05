@@ -103,7 +103,8 @@ object frmUsers: TfrmUsers
     Active = False
     UseRegistry = True
     StoredProps.Strings = (
-      'edtLogin.Text')
+      'edtLogin.Text'
+      'edtPassword.Text')
     StoredValues = <>
     Left = 24
     Top = 8
