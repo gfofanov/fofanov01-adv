@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Registry, OracleData, DBGridEh, ActnList, Placemnt, IniFiles;
+  Dialogs, Registry, DBGridEh, ActnList, Placemnt, IniFiles, FIBDataSet, pFIBDataSet;
 
 type
   TfrmParentMat_Store = class(TForm)
@@ -55,8 +55,8 @@ begin
                   sortfield:=regGrid.ReadString(SprRegistryKey,DataSource.DataSet.Name+'_sortfield','');
                   if sortfield<>'' then
                     begin
-                      TOracleDataSet(DataSource.DataSet).SetVariable('sortphrase',' order by ');
-                      TOracleDataSet(DataSource.DataSet).SetVariable('sortfield',sortfield);
+                      TpFIBDataSet(DataSource.DataSet).ParamByName('sortphrase').AsString:=' order by ';
+                      TpFIBDataSet(DataSource.DataSet).ParamByName('sortfield').AsString:=sortfield;
                       // Если отпарсить не удалось, то, возможно, это ошибка в списке полей для сортировки
                       {if not TOracleDataSet(DataSource.DataSet).ParseSQL then
                         begin
@@ -119,9 +119,9 @@ begin
     begin
       if Components[i] is TDBGridEH then
         begin
-          if Assigned((Components[i] as TDBGridEH).DataSource) and Assigned((Components[i] as TDBGridEH).DataSource.DataSet) and ((Components[i] as TDBGridEH).DataSource.DataSet is TOracleDataSet) then
+          if Assigned((Components[i] as TDBGridEH).DataSource) and Assigned((Components[i] as TDBGridEH).DataSource.DataSet) and ((Components[i] as TDBGridEH).DataSource.DataSet is TpFIBDataSet) then
             regGrid.WriteString(SprRegistryKey,(Components[i] as TDBGridEH).DataSource.DataSet.Name+'_sortfield',
-                                TOracleDataSet((Components[i] as TDBGridEH).DataSource.DataSet).GetVariable('sortfield'));
+                                TpFIBDataSet((Components[i] as TDBGridEH).DataSource.DataSet).ParamByName('sortfield').AsString);
           Section:=Self.ClassName+(Components[i] as TDBGridEH).Name;
           (Components[i] as TDBGridEH).SaveColumnsLayout(TCustomIniFile(regGrid), Section);
         end;
