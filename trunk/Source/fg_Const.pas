@@ -55,16 +55,12 @@ const
 
   cContractor = 1; // Справочник контрагентов
   cContract = 2; // Справочник договоров
-
+  cAdv = 3; // Рекламная конструкция
+  cSide = 4; // Сторона рекламной конструкции
 
   // Двойные формы
 
-  cApp_Mat_Rate = 1; // Справочник применяемости материала и нормы затрат
-  cReason_Discard = 2; // Справочник причин списания
-  cPredmetToPredmet = 3; // Выбор детали из справочника деталей
-  cAct_Discard_Rem = 4; //Акт списания с НЗП
-  cCard_Start_Mat = 5; // Карта отпуска-запуска материала
-  cStart_Det = 6; // Запуск ДСЕ
+  cAdvSide = 1; // Рекламные конструкции и их стороны
 
 
   // Тройные формы
@@ -77,6 +73,8 @@ const
 
   cSimpleFilterContractor = 1;
   cSimpleFilterContract = 2;
+  cSimpleFilterAdv = 3;
+  cSimpleFilterSide = 4;
 
 implementation
 

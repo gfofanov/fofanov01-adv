@@ -20,7 +20,13 @@ uses
   edtSprContractor in 'Sprav\edtSprContractor.pas' {frmEdtSprContractor},
   FilterContractor in 'Filters\FilterContractor.pas' {frmFilterContractor},
   SprContract in 'Sprav\SprContract.pas' {frmSprContract},
-  FilterContract in 'Filters\FilterContract.pas' {frmFilterContract};
+  FilterContract in 'Filters\FilterContract.pas' {frmFilterContract},
+  BaseDualList in 'Parent\BaseDualList.pas' {frmBaseDualList},
+  AdvSide in 'Sprav\AdvSide.pas' {frmAdvSide},
+  FilterAdv in 'Filters\FilterAdv.pas' {frmFilterAdv},
+  FilterSide in 'Filters\FilterSide.pas' {frmFilterSide},
+  EnterDate in 'EnterDate.pas' {frmEnterDate},
+  edtAdv in 'Sprav\edtAdv.pas' {frmEdtAdv};
 
 {$R *.res}
 

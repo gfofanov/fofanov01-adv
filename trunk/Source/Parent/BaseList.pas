@@ -388,21 +388,13 @@ begin
   TpFIBDataSet(grid.DataSource.DataSet).ParamByName('sortfield').AsString:=s;
   if grid.DataSource.DataSet.Active then
     grid.DataSource.DataSet.Close;
-  {$IFDEF NO_THREAD}
   grid.DataSource.DataSet.Open;
-  {$ELSE}
-  OpenCancellableQuery(TOracleDataSet(grid.DataSource.DataSet), grid.DataSource);
-  {$ENDIF}
 end;
 
 procedure TfrmBaseList.actRefreshExecute(Sender: TObject);
 begin
   inherited;
-  {$IFDEF NO_THREAD}
   Query.Refresh;
-  {$ELSE}
-  RefreshCancellableQuery(Query, DataSource);
-  {$ENDIF}
 end;
 
 procedure TfrmBaseList.actSetupColumnsExecute(Sender: TObject);
@@ -542,7 +534,7 @@ begin
      if Assigned(AfterDelete) then
        AfterDelete(Self);
     except on E : Exception do
-     MessageDlg('Ошибка Oracle!'#10+E.Message, mtError, [mbOK], 0)
+     MessageDlg('Ошибка сервера БД!'#10+E.Message, mtError, [mbOK], 0)
     end
 end;
 
@@ -587,11 +579,7 @@ begin
   if DBGridEh1.DataSource.DataSet.Active then
     DBGridEh1.DataSource.DataSet.Close;
   TpFIBDataSet(DBGridEh1.DataSource.DataSet).ParamByName('id').AsString:=' and '+NameTable+'.'+KeyField+'='+IntToStr(id);
-  {$IFDEF NO_THREAD}
   DBGridEh1.DataSource.DataSet.Open;
-  {$ELSE}
-  OpenCancellableQuery(TOracleDataSet(DBGridEh1.DataSource.DataSet), DBGridEh1.DataSource);
-  {$ENDIF}
   TpFIBDataSet(DBGridEh1.DataSource.DataSet).ParamByName('id').AsString:='';
 end;
 
@@ -642,12 +630,12 @@ end;
 procedure TfrmBaseList.DBGridEh1DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumnEh;
   State: TGridDrawState);
-  var
+  {var
     Res_Str : string;
-    CurColor : TColor;
+    CurColor : TColor;}
 begin
   inherited;
-  if isSecCond and (Column.Tag<>0) then
+  {if isSecCond and (Column.Tag<>0) then
     begin
       if not Assigned((Sender as TDBGridEH).DataSource.DataSet) then
         Exit;
@@ -665,7 +653,7 @@ begin
             Font.Color:=CurColor;
             TextOut(Rect.Left,Rect.Top,Res_Str);
           end;
-    end;
+    end;}
 end;
 
 procedure TfrmBaseList.actCopyBufferExecute(Sender: TObject);

@@ -38,6 +38,7 @@ inherited frmSprContract: TfrmSprContract
           FieldName = 'DATE_END'
           Footers = <>
           Title.Caption = #1055#1077#1088#1080#1086#1076' '#1076#1077#1081#1089#1090#1074#1080#1103' '#1076#1086#1075#1086#1074#1086#1088#1072'|'#1054#1082#1086#1085#1095#1072#1085#1080#1077
+          Width = 77
         end
         item
           EditButtons = <>
@@ -82,6 +83,6 @@ inherited frmSprContract: TfrmSprContract
       '  @@sortphrase@ @@sortfield@')
     AutoUpdateOptions.UpdateTableName = 'CONTRACT'
     AutoUpdateOptions.KeyFields = 'ID_CONTRACT'
-    AutoUpdateOptions.GeneratorName = 'GEN__ID'
+    AutoUpdateOptions.GeneratorName = 'GEN_CONTRACT_ID'
   end
 end

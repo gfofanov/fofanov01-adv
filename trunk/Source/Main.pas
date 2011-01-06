@@ -21,27 +21,30 @@ type
     StatusBar1: TStatusBar;
     N8: TMenuItem;
     actOptions: TAction;
-    actSprMeasure: TAction;
-    actSprMaterial: TAction;
     N10: TMenuItem;
     N17: TMenuItem;
     actSprContractor: TAction;
     N1: TMenuItem;
     actSprContract: TAction;
     N2: TMenuItem;
+    actAdvSide: TAction;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    actContractPrice_Contract: TAction;
+    N6: TMenuItem;
     procedure actExitExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure actSprDeptExecute(Sender: TObject);
     procedure actSprContractorExecute(Sender: TObject);
     procedure actSprContractExecute(Sender: TObject);
+    procedure actAdvSideExecute(Sender: TObject);
   private
     { Private declarations }
     OldHint : TNotifyEvent;
     procedure DisplayHint(Sender : TObject); virtual; // отображение хинта в строке статуса
     procedure OpenListForm(Sender : TObject; aType : Word);
     procedure OpenDualListForm(Sender : TObject; aType : Word);
-    procedure OpenTripleListForm(Sender : TObject; aType : Word);
+    //procedure OpenTripleListForm(Sender : TObject; aType : Word);
   public
     { Public declarations }
   end;
@@ -51,10 +54,15 @@ var
 
 implementation
 
-uses DataModule, BaseList, {BaseDualList, }{BaseTripleList, }BaseSimpleFilter, fg_Const, //Mat_StoreOptions,
-     OracleCancellableUtils;
+uses DataModule, BaseList, BaseDualList, {BaseTripleList, }BaseSimpleFilter, fg_Const;
 
 {$R *.dfm}
+
+procedure TfrmMain.actAdvSideExecute(Sender: TObject);
+begin
+  inherited;
+  OpenDualListForm(Sender, cAdvSide);
+end;
 
 procedure TfrmMain.actExitExecute(Sender: TObject);
 begin
@@ -82,35 +90,32 @@ begin
 end;
 
 procedure TfrmMain.OpenDualListForm(Sender: TObject; aType: Word);
-  {var
-    bForm : TfrmBaseDualList;}
+  var
+    bForm : TfrmBaseDualList;
 begin
-  {if aType=cReason_Discard then
-    bForm:=BrokerDualListForm.CreateList(Self, aType, doFilterLeftList)
-  else
-    bForm:=BrokerDualListForm.CreateList(Self, aType, doFilterList);
+  bForm:=BrokerDualListForm.CreateList(Self, aType, doFilterList);
   if bForm=nil then
     Exit;
   try
    bForm.ShowModal;
   finally
    FreeAndNil(bForm);
-  end;}
+  end;
 end;
 
-procedure TfrmMain.OpenTripleListForm(Sender: TObject; aType: Word);
-  {var
-    bForm : TfrmBaseTripleList;}
+{procedure TfrmMain.OpenTripleListForm(Sender: TObject; aType: Word);
+  var
+    bForm : TfrmBaseTripleList;
 begin
-  {bForm:=BrokerTripleListForm.CreateList(Self, aType, doFilterList);
+  bForm:=BrokerTripleListForm.CreateList(Self, aType, doFilterList);
   if bForm=nil then
     Exit;
   try
    bForm.ShowModal;
   finally
    FreeAndNil(bForm);
-  end;}
-end;
+  end;
+end;}
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
@@ -123,21 +128,6 @@ procedure TfrmMain.FormDestroy(Sender: TObject);
 begin
   inherited;
   Application.OnHint:=OldHint;
-end;
-
-procedure TfrmMain.actSprDeptExecute(Sender: TObject);
-  {var
-    bForm : TfrmBaseList;}
-begin
-  inherited;
-  {bForm:=BrokerListForm.CreateList(Self, cDept, doViewList);
-  if bForm=nil then
-    Exit;
-  try
-   bForm.ShowModal;
-  finally
-   FreeAndNil(bForm);
-  end;}
 end;
 
 procedure TfrmMain.actSprContractExecute(Sender: TObject);

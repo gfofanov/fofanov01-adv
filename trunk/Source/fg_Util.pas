@@ -11,7 +11,7 @@ unit Fg_util;
 
 interface
 
-uses RxStrUtils, Controls, Oracle, OracleData, SysUtils, dbctrls,
+uses RxStrUtils, Controls{, Oracle, OracleData}, SysUtils, dbctrls,
      RxDBCtrl, stdctrls, RxLookup, Forms, DBGridEH, DB, Variants,
      dateUtil, Dialogs, DateUtils, FIBDatabase, pFIBDatabase, FIBQuery, pFIBQuery;
 
@@ -41,49 +41,54 @@ procedure UnsetReadOnlyEdit(AOwner:TControl);
 // Процедура убирает у всех компонентов, которые
 // имеют возможность редактирования, свойство ReadOnly
 
-function GetResultSqlDOA(Session : TOracleSession; const Sql : String ) : Variant;
+//function GetResultSqlDOA(Session : TOracleSession; const Sql : String ) : Variant;
 // Выполняет SQL запрос, возвращает поле с именем 'Result'
 
 function GetResSqlFIB(Session : TpFIBDatabase; const v_Sql : String ) : Variant;
 // Выполняет SQL запрос, возвращает первое поле результата
 
-function GetResBindSql(aSession : TOracleSession; const strSql : string;
+{function GetResBindSql(aSession : TOracleSession; const strSql : string;
                        const aBindVar : array of string;
                        const aBindType : array of Integer;
-                       const aBindValue : array of Variant) : Variant;
+                       const aBindValue : array of Variant) : Variant;}
 // Выполняет SQL запрос, возвращает поле с именем 'Result'
 // Использует связанные переменные
 
-procedure ExecDOASQL(aSession : TOracleSession; const strSQL : string);
+//procedure ExecDOASQL(aSession : TOracleSession; const strSQL : string);
 // Выполнить SQL запрос
 
-procedure ExecBindSQL(aSession : TOracleSession; const strSQL : string;
+{procedure ExecBindSQL(aSession : TOracleSession; const strSQL : string;
                          const aBindVar : array of string;
                          const aBindType : array of Integer;
-                         const aBindValue : array of Variant);
+                         const aBindValue : array of Variant);}
 // Выполнить SQL запрос, используя связанные переменные
 
 function DeleteSubStr(s, Substr : string) : string;
 // Удалить слово Substr из строки s
 // Слова в строке разделены запятой с пробелом - ", "
 
-procedure ReopenQuery(Query : TOracleDataSet; KeyField : string; RestorePos : Boolean);
+//procedure ReopenQuery(Query : TOracleDataSet; KeyField : string; RestorePos : Boolean);
 // Закрыть и снова открыть запрос
 // Если RestorePos=True, то попытаться восстановить позицию
 
-procedure SortQueryGrid(Query : TOracleDataSet; var Column: TColumnEh);
+//procedure SortQueryGrid(Query : TOracleDataSet; var Column: TColumnEh);
 // Сортировка набора данных по нажатому столбцу
 
-function GetMultField(Session : TOracleSession; const Sql : string;
+{function GetMultField(Session : TOracleSession; const Sql : string;
                       const aNameFields : array of string;
-                      var ValueFields : array of Variant) : Boolean;
+                      var ValueFields : array of Variant) : Boolean;}
 // Выполняет SQL запрос, возвращает нужные поля
 
-function GetBindMultField(aSession : TOracleSession; const aSql : string;
+{function GetBindMultField(aSession : TOracleSession; const aSql : string;
                           const aNameFields : array of string;
                           var ValueFields : array of Variant;
                           const aBindVar : array of string;
                           const aBindType : array of Integer;
+                          const aBindValue : array of Variant) : Boolean;}
+function GetBindMultField(aSession : TpFIBDatabase; const aSql : string;
+                          const aNameFields : array of string;
+                          var ValueFields : array of Variant;
+                          const aBindVar : array of string;
                           const aBindValue : array of Variant) : Boolean;
 // Выполняет SQL запрос, возвращает нужные поля
 // Использует связанные переменные
@@ -91,9 +96,9 @@ function GetBindMultField(aSession : TOracleSession; const aSql : string;
 function First_Day_Prev_Month(curDate : TDateTime): TDateTime;
 // Возвратить первый день предыдущего месяца
 
-procedure ExecOraclePackage(aSession : TOracleSession;
+{procedure ExecOraclePackage(aSession : TOracleSession;
                             const aNameProc : string;
-                            aParam : array of Variant);
+                            aParam : array of Variant);}
 // Выполняет процедуру Oracle
 
 procedure Date_Div_on_Month(DateFirst : TDateTime; DateLast : TDateTime;
@@ -243,7 +248,7 @@ begin
                       (Components[i] As TEdit).ReadOnly:=False
 end;
 
-function GetResultSqlDOA(Session : TOracleSession; const Sql : string) : Variant;
+{function GetResultSqlDOA(Session : TOracleSession; const Sql : string) : Variant;
 // Выполняет SQL запрос, возвращает поле с именем 'Result'
   var
     tmpQuery : TOracleQuery;
@@ -259,7 +264,7 @@ begin
   finally
    FreeAndNil(tmpQuery);
   end
-end;
+end;}
 
 function GetResSqlFIB(Session : TpFIBDatabase; const v_Sql : string) : Variant;
 // Выполняет SQL запрос, возвращает первое поле результата
@@ -282,7 +287,7 @@ begin
   end;
 end;
 
-function GetResBindSql(aSession : TOracleSession; const strSql : string;
+{function GetResBindSql(aSession : TOracleSession; const strSql : string;
                        const aBindVar : array of string;
                        const aBindType : array of Integer;
                        const aBindValue : array of Variant) : Variant;
@@ -307,9 +312,9 @@ begin
     finally
      Free;
     end
-end;
+end;}
 
-procedure ExecDOASQL(aSession : TOracleSession; const strSQL : string);
+{procedure ExecDOASQL(aSession : TOracleSession; const strSQL : string);
 // Выполнить SQL запрос
 begin
   with TOracleQuery.Create(Application) do
@@ -320,9 +325,9 @@ begin
     finally
      Free
     end
-end;
+end;}
 
-procedure ExecBindSQL(aSession : TOracleSession; const strSQL : string;
+{procedure ExecBindSQL(aSession : TOracleSession; const strSQL : string;
                          const aBindVar : array of string;
                          const aBindType : array of Integer;
                          const aBindValue : array of Variant);
@@ -343,7 +348,7 @@ begin
     finally
      Free
     end
-end;
+end;}
 
 function DeleteSubStr(s, Substr : string) : string;
 // Удалить слово Substr из строки s
@@ -368,7 +373,7 @@ begin
   Result:=DelSpace1(Copy(s,1,n-1)+Copy(s,n+Length(s1),Length(s)-(n+Length(s1))+1))
 end;
 
-procedure ReopenQuery(Query : TOracleDataSet; KeyField : string; RestorePos : Boolean);
+{procedure ReopenQuery(Query : TOracleDataSet; KeyField : string; RestorePos : Boolean);
 // Закрыть и снова открыть запрос
 // Если RestorePos=True, то попытаться восстановить позицию
   var
@@ -391,9 +396,9 @@ begin
   finally
    Screen.Cursor:=crDefault
   end
-end;
+end;}
 
-procedure SortQueryGrid(Query : TOracleDataSet; var Column: TColumnEh);
+{procedure SortQueryGrid(Query : TOracleDataSet; var Column: TColumnEh);
 // Сортировка набора данных по нажатому столбцу
   var
     Bookmark : TBookmark;
@@ -446,9 +451,9 @@ begin
        Screen.Cursor:=crDefault
       end
     end
-end;
+end;}
 
-function GetMultField(Session : TOracleSession; const Sql : string;
+{function GetMultField(Session : TOracleSession; const Sql : string;
                       const aNameFields : array of string;
                       var ValueFields : array of Variant) : Boolean;
 // Выполняет SQL запрос, возвращает нужные поля
@@ -471,13 +476,12 @@ begin
   finally
    FreeAndNil(tmpQuery);
   end;
-end;
+end;}
 
-function GetBindMultField(aSession : TOracleSession; const aSql : string;
+function GetBindMultField(aSession : TpFIBDatabase; const aSql : string;
                           const aNameFields : array of string;
                           var ValueFields : array of Variant;
                           const aBindVar : array of string;
-                          const aBindType : array of Integer;
                           const aBindValue : array of Variant) : Boolean;
 // Выполняет SQL запрос, возвращает нужные поля
 // Использует связанные переменные
@@ -485,25 +489,25 @@ function GetBindMultField(aSession : TOracleSession; const aSql : string;
     i : Integer;
 begin
   Result:=False;
-  with TOracleQuery.Create(Application) do
+  with TpFIBQuery.Create(Application) do
     try
-     Session:=aSession;
+     Database:=aSession;
+     Transaction:=aSession.DefaultTransaction;
      SQL.Add(aSql);
      for i:=Low(aBindVar) to High(aBindVar) do
        begin
-         DeclareVariable(aBindVar[i],aBindType[i]);
-         SetVariable(aBindVar[i],aBindValue[i]);
+         ParamByName(aBindVar[i]).AsVariant:=aBindValue[i];
        end;
-     Execute;
+     ExecQuery;
      if not EOF then
        begin
          for i:=Low(aNameFields) to High(aNameFields) do
-           ValueFields[i]:=Field(aNameFields[i]);
+           ValueFields[i]:=FieldByName(aNameFields[i]).AsVariant;
          Result:=True;
        end;
     finally
-     Free
-    end
+     Free;
+    end;
 end;
 
 function First_Day_Prev_Month(curDate : TDateTime): TDateTime;
@@ -523,7 +527,7 @@ begin
   Result:=EncodeDate(Year, Month, Day);
 end;
 
-procedure ExecOraclePackage(aSession : TOracleSession; const aNameProc : string;
+{procedure ExecOraclePackage(aSession : TOracleSession; const aNameProc : string;
                             aParam : array of Variant);
 begin
   with TOraclePackage.Create(Application) do
@@ -542,7 +546,7 @@ begin
     finally
      Free;
     end;
-end;
+end;}
 
 procedure Date_Div_on_Month(DateFirst : TDateTime; DateLast : TDateTime;
                             Order : array of byte; out DateArray: TDateArray);

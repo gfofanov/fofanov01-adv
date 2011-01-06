@@ -50,16 +50,28 @@
       <Form>dm</Form>
       <DesignClass>TDataModule</DesignClass>
     </DCCReference>
+    <DCCReference Include="EnterDate.pas">
+      <Form>frmEnterDate</Form>
+    </DCCReference>
     <DCCReference Include="fg_Const.pas" />
     <DCCReference Include="fg_Util.pas" />
+    <DCCReference Include="Filters\FilterAdv.pas">
+      <Form>frmFilterAdv</Form>
+    </DCCReference>
     <DCCReference Include="Filters\FilterContract.pas">
       <Form>frmFilterContract</Form>
     </DCCReference>
     <DCCReference Include="Filters\FilterContractor.pas">
       <Form>frmFilterContractor</Form>
     </DCCReference>
+    <DCCReference Include="Filters\FilterSide.pas">
+      <Form>frmFilterSide</Form>
+    </DCCReference>
     <DCCReference Include="Main.pas">
       <Form>frmMain</Form>
+    </DCCReference>
+    <DCCReference Include="Parent\BaseDualList.pas">
+      <Form>frmBaseDualList</Form>
     </DCCReference>
     <DCCReference Include="Parent\BaseEditForm.pas">
       <Form>frmBaseEditForm</Form>
@@ -80,6 +92,12 @@
     <DCCReference Include="Second_Start.pas" />
     <DCCReference Include="SetupColumns.pas">
       <Form>frmSetupColumns</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\AdvSide.pas">
+      <Form>frmAdvSide</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\edtAdv.pas">
+      <Form>frmEdtAdv</Form>
     </DCCReference>
     <DCCReference Include="Sprav\edtSprContractor.pas">
       <Form>frmEdtSprContractor</Form>
