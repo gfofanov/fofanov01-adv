@@ -10,6 +10,7 @@ type
   TfrmFilterAdv = class(TfrmBaseSimpleFilter)
     Label1: TLabel;
     edtAddress: TEdit;
+    rgrAdv: TRadioGroup;
     procedure btnOkClick(Sender: TObject); override;
   private
     { Private declarations }
@@ -35,6 +36,12 @@ begin
     begin
       FilterString:=FilterString+' and adv.address_name like '#39+edtAddress.Text+#39;
     end;
+  case rgrAdv.ItemIndex of
+    1 : FilterString:=FilterString+' and adv.id_adv in (select id_adv from'+' ( select id_adv, count(*) c_all, sum(case when date_fact is not null then 1 else 0 end) c_full, sum(case when date_fact is null then 1 else 0 end) c_empty from side group by id_adv) where c_all<>c_full and c_all<>c_empty)';
+    2 : FilterString:=FilterString+' and adv.id_adv in (select id_adv from ( select id_adv, count(*) c_all, sum(case when date_fact is not null then 1 else 0 end) c_full, sum(case when date_fact is null then 1 else 0 end) c_empty from side group by id_adv) where c_all=c_full)';
+    3 : FilterString:=FilterString+' and adv.id_adv in (select id_adv from ( select id_adv, count(*) c_all, sum(case when date_fact is not null then 1 else 0 end) c_full, sum(case when date_fact is null then 1 else 0 end) c_empty from side group by id_adv) where c_all=c_empty)';
+    4 : FilterString:=FilterString+' and not exists (select 1 from side s where s.id_adv=adv.id_adv)';
+  end;
 end;
 
 constructor TfrmFilterAdv.Create(aOwner: TComponent; aNameFilter: string;

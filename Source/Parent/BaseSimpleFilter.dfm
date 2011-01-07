@@ -1,9 +1,9 @@
 object frmBaseSimpleFilter: TfrmBaseSimpleFilter
   Left = 246
   Top = 128
-  Width = 382
-  Height = 245
   Caption = #1060#1080#1083#1100#1090#1088
+  ClientHeight = 221
+  ClientWidth = 374
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,12 +17,12 @@ object frmBaseSimpleFilter: TfrmBaseSimpleFilter
   OnCreate = FormCreate
   DesignSize = (
     374
-    218)
+    221)
   PixelsPerInch = 96
   TextHeight = 16
   object Bevel1: TBevel
     Left = 0
-    Top = 179
+    Top = 182
     Width = 374
     Height = 39
     Align = alBottom
@@ -51,7 +51,7 @@ object frmBaseSimpleFilter: TfrmBaseSimpleFilter
     Left = 0
     Top = 0
     Width = 374
-    Height = 179
+    Height = 182
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
