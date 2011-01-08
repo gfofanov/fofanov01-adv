@@ -26,7 +26,8 @@ uses
   FilterAdv in 'Filters\FilterAdv.pas' {frmFilterAdv},
   FilterSide in 'Filters\FilterSide.pas' {frmFilterSide},
   EnterDate in 'EnterDate.pas' {frmEnterDate},
-  edtAdv in 'Sprav\edtAdv.pas' {frmEdtAdv};
+  edtAdv in 'Sprav\edtAdv.pas' {frmEdtAdv},
+  edtSprSide in 'Sprav\edtSprSide.pas' {frmEdtSprSide};
 
 {$R *.res}
 
