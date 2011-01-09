@@ -88,7 +88,7 @@ object frmUsers: TfrmUsers
       Width = 221
       Height = 24
       TabOrder = 0
-      Text = 'fg-home'
+      Text = 'localhost'
     end
     object edtPassword: TEdit
       Left = 158

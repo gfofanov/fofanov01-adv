@@ -216,6 +216,11 @@ inherited frmAdvSide: TfrmAdvSide
       Caption = #1057#1090#1086#1088#1086#1085#1099' '#1088#1077#1082#1083#1072#1084#1085#1086#1081' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
     end
   end
+  inherited FormStorage: TFormStorage
+    StoredProps.Strings = (
+      'Panel1.Width'
+      'Panel1.Height')
+  end
   inherited ActionList1: TActionList
     object actDateFactSet: TAction
       Category = 'Service'
