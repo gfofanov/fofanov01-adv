@@ -35,7 +35,7 @@ function EnterPassword : Boolean;
 
 implementation
 
-uses DataModule, fg_Util, Variants;
+uses DataModule, fg_Util, Variants, rUtils;
 
 {$R *.DFM}
 
@@ -105,6 +105,10 @@ begin
   dm.oDbAdv.DBName:=edtLogin.Text+':'+edtPassword.Text;
   try
    try
+    if AnsiUpperCase(GetCompName)='FG-HOME' then
+      dm.oDbAdv.ConnectParams.Password:='adv'
+    else
+      dm.oDbAdv.ConnectParams.Password:='masterkey';
     dm.oDbAdv.Open;
     dm.pFIBTransaction1.Active:=True;
    except on E:Exception do
