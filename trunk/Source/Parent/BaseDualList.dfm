@@ -136,7 +136,7 @@ inherited frmBaseDualList: TfrmBaseDualList
       FooterFont.Name = 'MS Sans Serif'
       FooterFont.Style = []
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghIncSearch, dghColumnResize, dghColumnMove]
+      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghIncSearch, dghPreferIncSearch, dghColumnResize, dghColumnMove]
       ParentFont = False
       PopupMenu = PopupMenuLeft
       RowDetailPanel.Color = clBtnFace
@@ -207,7 +207,7 @@ inherited frmBaseDualList: TfrmBaseDualList
       FooterFont.Name = 'MS Sans Serif'
       FooterFont.Style = []
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
-      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghIncSearch, dghColumnResize, dghColumnMove]
+      OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghIncSearch, dghPreferIncSearch, dghColumnResize, dghColumnMove]
       ParentFont = False
       PopupMenu = PopupMenuRight
       RowDetailPanel.Color = clBtnFace
