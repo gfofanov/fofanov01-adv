@@ -13,7 +13,8 @@ interface
 
 uses RxStrUtils, Controls{, Oracle, OracleData}, SysUtils, dbctrls,
      RxDBCtrl, stdctrls, RxLookup, Forms, DBGridEH, DB, Variants,
-     dateUtil, Dialogs, DateUtils, FIBDatabase, pFIBDatabase, FIBQuery, pFIBQuery;
+     dateUtil, Dialogs, DateUtils, FIBDatabase, pFIBDatabase,
+     FIBQuery, pFIBQuery, Clipbrd;
 
 type
   TDateArray = array of array[0..1] of TDateTime;
@@ -103,6 +104,8 @@ function First_Day_Prev_Month(curDate : TDateTime): TDateTime;
 
 procedure Date_Div_on_Month(DateFirst : TDateTime; DateLast : TDateTime;
                             Order : array of byte; out DateArray: TDateArray);
+
+function GridEhCopyToBuffer(Grid : TDBGridEh) : Longint;
 
 implementation
 
@@ -595,6 +598,98 @@ begin
       DateLast:=IncMonth(DateLast, 1);
       inc(j);
     end;
+end;
+
+function GridEhCopyToBuffer(Grid : TDBGridEh) : Longint;
+var
+  I, RWidth, J : LongInt ;
+  AllWidth : LongInt;
+  MyBookMark : TBookmark;
+  TextBuffer : PChar;
+  Clipboard : TClipboard;
+  CountRec : Longint ;
+begin
+  CountRec := 0 ;
+  Result := 0 ;
+  with Grid do
+    begin
+      if ( DataSource = nil ) or ( DataSource.DataSet = nil ) then Exit;
+      AllWidth := 0;
+      RWidth := 0;
+      J := 0;
+      for i:=0 to FieldCount-1 do
+        begin
+          try
+           if Columns.Items[I].Visible then
+             Inc( RWidth, Fields[I].DisplayWidth + 1 );
+          except
+           ShowMessage(Fields[I].FullName);
+           raise;
+          end;
+        end;
+      inc( RWidth );
+      inc( AllWidth, ( DataSource.DataSet.RecordCount ) * RWidth );
+      for I := 0 to Columns.Count - 1 do
+        with Columns.Items[I] do
+          begin
+            if Visible then
+              inc(AllWidth, Length(Columns.Items[i].Title.Caption)+1);
+          end;
+      Inc(AllWidth);
+      //   if AllWidth>65528 then AllWidth:=65528;
+      GetMem( TextBuffer, AllWidth );
+      for I := 0 to Columns.Count - 1 do
+        with Columns.Items[I] do
+          if Visible then
+            begin
+              strpcopy( TextBuffer + J, Columns.Items[i].Title.Caption);
+              inc( J, Length(Columns.Items[i].Title.Caption) + 1 );
+              strpcopy( TextBuffer + J - 1, #09 );
+            end;
+      {For I := 0 To FieldCount - 1 Do
+        With Fields[I] Do
+          Begin
+            strpcopy( TextBuffer + J, copy( DisplayLabel, 1, DisplayWidth ) );
+            inc( J, length( copy( DisplayLabel, 1, DisplayWidth ) ) + 1 );
+            strpcopy( TextBuffer + J - 1, #09 );
+          End;}
+      strpcopy( TextBuffer + J - 1, #13 + #10 );
+      inc( J );
+      MyBookMark := DataSource.DataSet.GetBookmark;
+      try
+        DataSource.DataSet.DisableControls;
+        DataSource.DataSet.First;
+        while not DataSource.DataSet.Eof and ( J < ( AllWidth - RWidth ) ) do
+          begin
+            for I := 0 To FieldCount - 1 do
+              if Columns.Items[I].Visible then
+                with Fields[I] do
+                  begin
+                    strpcopy( TextBuffer + J, copy( Text, 1, DisplayWidth ) );
+                    inc( J, length( copy( Text, 1, DisplayWidth ) ) + 1 );
+                    strpcopy( TextBuffer + J - 1, #09 );
+                  end;
+            strpcopy( TextBuffer + J - 1, #13 + #10 );
+            inc( J );
+            Inc(CountRec);
+            DataSource.DataSet.Next;
+          End;
+        Try
+          DataSource.DataSet.GotoBookmark( MyBookMark );
+        Except
+        End;
+      Finally
+        DataSource.DataSet.EnableControls;
+        DataSource.DataSet.FreeBookMark( MyBookMark );
+      End;
+    End;
+  Clipboard := TClipboard.Create;
+  Clipboard.Open;
+  Clipboard.SetTextBuf( TextBuffer );
+  freemem( TextBuffer, AllWidth );
+  Clipboard.Close;
+  Clipboard.Free;
+  Result := CountRec ; {строк скопированно}
 end;
 
 end.

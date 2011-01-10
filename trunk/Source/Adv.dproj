@@ -99,6 +99,9 @@
     <DCCReference Include="Sprav\edtAdv.pas">
       <Form>frmEdtAdv</Form>
     </DCCReference>
+    <DCCReference Include="Sprav\edtSprContract.pas">
+      <Form>frmEdtSprContract</Form>
+    </DCCReference>
     <DCCReference Include="Sprav\edtSprContractor.pas">
       <Form>frmEdtSprContractor</Form>
     </DCCReference>

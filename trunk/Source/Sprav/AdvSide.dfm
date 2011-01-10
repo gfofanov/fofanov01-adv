@@ -1,10 +1,10 @@
 inherited frmAdvSide: TfrmAdvSide
   Caption = #1056#1077#1082#1083#1072#1084#1085#1099#1077' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080' '#1080' '#1080#1093' '#1089#1090#1086#1088#1086#1085#1099
-  ClientHeight = 456
+  ClientHeight = 551
   PixelsPerInch = 96
   TextHeight = 16
   inherited StatusBar1: TStatusBar
-    Top = 437
+    Top = 532
   end
   inherited Panel1: TPanel
     Width = 688
@@ -79,6 +79,16 @@ inherited frmAdvSide: TfrmAdvSide
           FieldName = 'DATE_END'
           Footers = <>
           Title.Caption = #1055#1077#1088#1080#1086#1076' '#1076#1077#1081#1089#1090#1074#1080#1103' '#1076#1086#1075#1086#1074#1086#1088#1072'|'#1054#1082#1086#1085#1095#1072#1085#1080#1077
+        end
+        item
+          Checkboxes = True
+          EditButtons = <>
+          FieldName = 'IS_PHOTO'
+          Footers = <>
+          KeyList.Strings = (
+            '1'
+            '0')
+          Title.Caption = #1045#1089#1090#1100' '#1092#1086#1090#1086
         end>
     end
     inherited Panel3: TPanel
@@ -97,10 +107,10 @@ inherited frmAdvSide: TfrmAdvSide
     Left = 0
     Top = 236
     Width = 688
-    Height = 201
+    Height = 296
     inherited DBGridEh2: TDBGridEh
       Width = 688
-      Height = 184
+      Height = 279
       Columns = <
         item
           EditButtons = <>
@@ -209,6 +219,16 @@ inherited frmAdvSide: TfrmAdvSide
           FieldName = 'DATE_END1'
           Footers = <>
           Title.Caption = #1055#1077#1088#1080#1086#1076' '#1076#1077#1081#1089#1090#1074#1080#1103' '#1094#1077#1085#1099'|'#1054#1082#1086#1085#1095#1072#1085#1080#1077
+        end
+        item
+          Checkboxes = True
+          EditButtons = <>
+          FieldName = 'is_photo'
+          Footers = <>
+          KeyList.Strings = (
+            '1'
+            '0')
+          Title.Caption = #1045#1089#1090#1100' '#1092#1086#1090#1086
         end>
     end
     inherited Panel4: TPanel
@@ -225,6 +245,7 @@ inherited frmAdvSide: TfrmAdvSide
     object actDateFactSet: TAction
       Category = 'Service'
       Caption = #1047#1072#1076#1072#1090#1100' '#1076#1072#1090#1091' '#1091#1089#1090#1072#1085#1086#1074#1082#1080
+      Hint = #1047#1072#1076#1072#1090#1100' '#1076#1072#1090#1091' '#1091#1089#1090#1072#1085#1086#1074#1082#1080'|'#1047#1072#1076#1072#1090#1100' '#1076#1072#1090#1091' '#1092#1072#1082#1090#1080#1095#1077#1089#1082#1086#1081' '#1091#1089#1090#1072#1085#1086#1074#1082#1080
       OnExecute = actDateFactSetExecute
     end
     object actDateFactUnset: TAction
@@ -232,9 +253,66 @@ inherited frmAdvSide: TfrmAdvSide
       Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1076#1072#1090#1091' '#1091#1089#1090#1072#1085#1086#1074#1082#1080
       OnExecute = actDateFactUnsetExecute
     end
+    object actLoadPhotoAdv: TAction
+      Category = 'Service'
+      Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1092#1086#1090#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      Hint = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1092#1086#1090#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080'|'#1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1092#1086#1090#1086' '#1088#1077#1082#1083#1072#1084#1085#1086#1081' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      OnExecute = actLoadPhotoAdvExecute
+    end
+    object actLoadPhotoSide: TAction
+      Category = 'Service'
+      Caption = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099
+      Hint = #1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099'|'#1047#1072#1075#1088#1091#1079#1080#1090#1100' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099
+      OnExecute = actLoadPhotoSideExecute
+    end
+    object actShowPhotoAdv: TAction
+      Category = 'Service'
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1092#1086#1090#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      Hint = #1055#1088#1086#1089#1084#1086#1090#1088' '#1092#1086#1090#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080'|'#1055#1088#1086#1089#1084#1086#1090#1088' '#1092#1086#1090#1086' '#1088#1077#1082#1083#1072#1084#1085#1086#1081' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      OnExecute = actShowPhotoAdvExecute
+    end
+    object actShowPhotoSide: TAction
+      Category = 'Service'
+      Caption = #1055#1088#1086#1089#1084#1086#1090#1088' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099
+      Hint = #1055#1088#1086#1089#1084#1086#1090#1088' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099'|'#1055#1088#1086#1089#1084#1086#1090#1088' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099
+      OnExecute = actShowPhotoSideExecute
+    end
+    object actRepFreeAdv: TAction
+      Category = 'Reports'
+      Caption = #1057#1074#1086#1073#1086#1076#1085#1099#1077' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      Hint = #1057#1074#1086#1073#1086#1076#1085#1099#1077' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080'|'#1054#1090#1095#1077#1090' '#1087#1086' '#1089#1074#1086#1073#1086#1076#1085#1099#1084' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1103#1084
+      OnExecute = actRepFreeAdvExecute
+    end
+    object actDelPhotoAdv: TAction
+      Category = 'Service'
+      Caption = #1059#1076#1072#1083#1080#1090#1100' '#1092#1086#1090#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1086#1090#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080'|'#1059#1076#1072#1083#1080#1090#1100' '#1092#1086#1090#1086' '#1088#1077#1082#1083#1072#1084#1085#1086#1081' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      OnExecute = actDelPhotoAdvExecute
+    end
+    object actDelPhotoSide: TAction
+      Category = 'Service'
+      Caption = #1059#1076#1072#1083#1080#1090#1100' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099
+      Hint = #1059#1076#1072#1083#1080#1090#1100' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099'|'#1059#1076#1072#1083#1080#1090#1100' '#1092#1086#1090#1086' '#1089#1090#1086#1088#1086#1085#1099
+      OnExecute = actDelPhotoSideExecute
+    end
+    object actRepAdvwoSide: TAction
+      Category = 'Reports'
+      Caption = #1050#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080' '#1073#1077#1079' '#1089#1090#1086#1088#1086#1085
+      Hint = #1050#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080' '#1073#1077#1079' '#1089#1090#1086#1088#1086#1085'|'#1054#1090#1095#1077#1090' '#1087#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1103#1084' '#1073#1077#1079' '#1089#1090#1086#1088#1086#1085
+      OnExecute = actRepAdvwoSideExecute
+    end
   end
   inherited MainMenu1: TMainMenu
-    object N19: TMenuItem [1]
+    object N35: TMenuItem [1]
+      Caption = #1054#1090#1095#1077#1090#1099
+      object N36: TMenuItem
+        Action = actRepFreeAdv
+      end
+      object N42: TMenuItem
+        Action = actRepAdvwoSide
+      end
+    end
+    object N19: TMenuItem [2]
       Caption = #1057#1077#1088#1074#1080#1089
       object N20: TMenuItem
         Action = actDateFactSet
@@ -242,6 +320,44 @@ inherited frmAdvSide: TfrmAdvSide
       object N21: TMenuItem
         Action = actDateFactUnset
       end
+      object N28: TMenuItem
+        Caption = '-'
+      end
+      object N17: TMenuItem
+        Action = actLoadPhotoAdv
+      end
+      object N27: TMenuItem
+        Action = actShowPhotoAdv
+      end
+      object N37: TMenuItem
+        Action = actDelPhotoAdv
+      end
+      object N26: TMenuItem
+        Caption = '-'
+      end
+      object N25: TMenuItem
+        Action = actLoadPhotoSide
+      end
+      object N33: TMenuItem
+        Action = actShowPhotoSide
+      end
+      object N39: TMenuItem
+        Action = actDelPhotoSide
+      end
+    end
+  end
+  inherited PopupMenuLeft: TPopupMenu
+    object N29: TMenuItem
+      Caption = '-'
+    end
+    object N30: TMenuItem
+      Action = actLoadPhotoAdv
+    end
+    object N31: TMenuItem
+      Action = actShowPhotoAdv
+    end
+    object N38: TMenuItem
+      Action = actDelPhotoAdv
     end
   end
   inherited PopupMenuRight: TPopupMenu
@@ -251,8 +367,20 @@ inherited frmAdvSide: TfrmAdvSide
     object N23: TMenuItem
       Action = actDateFactSet
     end
+    object N41: TMenuItem
+      Caption = '-'
+    end
     object N24: TMenuItem
       Action = actDateFactUnset
+    end
+    object N32: TMenuItem
+      Action = actLoadPhotoSide
+    end
+    object N34: TMenuItem
+      Action = actShowPhotoSide
+    end
+    object N40: TMenuItem
+      Action = actDelPhotoSide
     end
   end
   inherited QueryLeft: TpFIBDataSet
@@ -263,6 +391,9 @@ inherited frmAdvSide: TfrmAdvSide
       
         '       , case when r.type_contractor=1 then '#39#1061#1086#1079#1103#1080#1085#39' else '#39#1050#1083#1080#1077#1085 +
         #1090#39' end type_'
+      
+        '       , case when adv.photo is not null then 1 else 0 end is_ph' +
+        'oto'
       '  from adv, contract c, contractor r'
       '  where 0=0'
       '        and adv.id_contract=c.id_contract'
@@ -293,6 +424,9 @@ inherited frmAdvSide: TfrmAdvSide
       '              when side.location_side=4 then '#39#1055#1088#1072#1074#1072#1103#39
       '              else '#39#1053#1077#1080#1079#1074#1077#1089#1090#1085#1086#39
       '         end location_side_'
+      
+        '       , case when side.photo is not null then 1 else 0 end is_p' +
+        'hoto'
       '  from side'
       '  left outer join contract c'
       '  on (side.id_contract=c.id_contract)'

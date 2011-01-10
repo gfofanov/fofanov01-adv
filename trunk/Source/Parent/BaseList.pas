@@ -87,6 +87,8 @@ type
     actCopyBuffer: TAction;
     N34: TMenuItem;
     Query: TpFIBDataSet;
+    N21: TMenuItem;
+    N22: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure actExitExecute(Sender: TObject);
     procedure actFilterExecute(Sender: TObject);
@@ -194,7 +196,7 @@ procedure InitListFormBroker;
 
 implementation
 
-uses DataModule, BaseSimpleFilter, SetupColumns;
+uses DataModule, BaseSimpleFilter, SetupColumns, Fg_util;
 
 {$R *.dfm}
 
@@ -615,14 +617,30 @@ end;
 procedure TfrmBaseList.actGetCountExecute(Sender: TObject);
   var
     num_record : Longint;
+    sqlField : string;
 begin
   inherited;
   // ѕоказать кол-во записей
-  Screen.Cursor:=crSQLWait;
   try
-   num_record:=Query.RecordCountFromSrv;
+   Query.DisableControls;
+   Query.Close;
+   // —охран€ем перечень полей в SQL-запросе дл€ того, чтобы его изменить.
+   // Ёто нужно потому, что, если в SQL-запросе есть одинаковые пол€,
+   // select count(*) выдаст ошибку - таково свойство вложенных запросов в Firebird
+   sqlField:=Query.FieldsClause;
+   // »змен€ем перечень полей. ѕри этом датасет должен быть закрыт
+   Query.FieldsClause:='1 as field1';
+   Screen.Cursor:=crSQLWait;
+   try
+    num_record:=Query.RecordCountFromSrv;
+   finally
+    Screen.Cursor:=crDefault;
+   end;
   finally
-   Screen.Cursor:=crDefault;
+   // ¬осстанавливаем перечень полей
+   Query.FieldsClause:=sqlField;
+   Query.Open;
+   Query.EnableControls;
   end;
   ShowMessage(' ол-во записей='+IntToStr(num_record));
 end;
@@ -659,7 +677,7 @@ end;
 procedure TfrmBaseList.actCopyBufferExecute(Sender: TObject);
 begin
   inherited;
-  //GridEhCopyToBuffer(DBGridEh1,Caption);
+  GridEhCopyToBuffer(DBGridEh1);
   DBGridEh1.SetFocus;
 end;
 

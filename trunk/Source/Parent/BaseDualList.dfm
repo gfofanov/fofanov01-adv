@@ -1,6 +1,6 @@
 inherited frmBaseDualList: TfrmBaseDualList
   Caption = 'frmBaseDualList'
-  ClientHeight = 437
+  ClientHeight = 532
   Menu = MainMenu1
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -96,7 +96,7 @@ inherited frmBaseDualList: TfrmBaseDualList
   end
   object StatusBar1: TStatusBar [1]
     Left = 0
-    Top = 418
+    Top = 513
     Width = 688
     Height = 19
     Panels = <>
@@ -105,7 +105,7 @@ inherited frmBaseDualList: TfrmBaseDualList
     Left = 0
     Top = 29
     Width = 281
-    Height = 389
+    Height = 484
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 2
@@ -115,7 +115,7 @@ inherited frmBaseDualList: TfrmBaseDualList
       Left = 0
       Top = 17
       Width = 281
-      Height = 372
+      Height = 467
       Align = alClient
       AllowedSelections = [gstRecordBookmarks]
       ColumnDefValues.Title.TitleButton = True
@@ -167,7 +167,7 @@ inherited frmBaseDualList: TfrmBaseDualList
     Left = 281
     Top = 29
     Width = 3
-    Height = 389
+    Height = 484
     ControlFirst = Panel1
     ControlSecond = Panel2
     Align = alLeft
@@ -176,7 +176,7 @@ inherited frmBaseDualList: TfrmBaseDualList
     Left = 284
     Top = 29
     Width = 404
-    Height = 389
+    Height = 484
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 4
@@ -186,7 +186,7 @@ inherited frmBaseDualList: TfrmBaseDualList
       Left = 0
       Top = 17
       Width = 404
-      Height = 372
+      Height = 467
       Align = alClient
       AllowedSelections = [gstRecordBookmarks]
       ColumnDefValues.Title.TitleButton = True
@@ -310,6 +310,18 @@ inherited frmBaseDualList: TfrmBaseDualList
       Hint = #1050#1086#1083#1086#1085#1082#1080'|'#1042#1099#1073#1088#1072#1090#1100' '#1085#1091#1078#1085#1099#1077' '#1082#1086#1083#1086#1085#1082#1080
       OnExecute = actSetupColumnsExecute
     end
+    object actGetCount: TAction
+      Caption = #1050#1086#1083'-'#1074#1086' '#1079#1072#1087#1080#1089#1077#1081
+      Hint = #1050#1086#1083'-'#1074#1086' '#1079#1072#1087#1080#1089#1077#1081'|'#1055#1086#1076#1089#1095#1080#1090#1072#1090#1100' '#1082#1086#1083'-'#1074#1086' '#1079#1072#1087#1080#1089#1077#1081
+      OnExecute = actGetCountExecute
+    end
+    object actCopyBuffer: TAction
+      Caption = #1042' '#1073#1091#1092#1077#1088
+      Hint = #1042' '#1073#1091#1092#1077#1088'|'#1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1089#1086#1076#1077#1088#1078#1080#1084#1086#1077' '#1075#1088#1080#1076#1072' '#1074' '#1073#1091#1092#1077#1088
+      ImageIndex = 15
+      ShortCut = 16451
+      OnExecute = actCopyBufferExecute
+    end
   end
   object MainMenu1: TMainMenu
     Left = 272
@@ -337,11 +349,14 @@ inherited frmBaseDualList: TfrmBaseDualList
       object N14: TMenuItem
         Action = actLeftFilter
       end
-      object N17: TMenuItem
-        Caption = '-'
-      end
       object N18: TMenuItem
         Action = actRefresh
+      end
+      object mnuGetCount: TMenuItem
+        Action = actGetCount
+      end
+      object mnuCopyBuffer: TMenuItem
+        Action = actCopyBuffer
       end
     end
     object N7: TMenuItem
@@ -371,6 +386,12 @@ inherited frmBaseDualList: TfrmBaseDualList
     end
     object N16: TMenuItem
       Action = actLeftFilter
+    end
+    object pmnuGetCountLeft: TMenuItem
+      Action = actGetCount
+    end
+    object pmnuCopyBufferLeft: TMenuItem
+      Action = actCopyBuffer
     end
   end
   object DataSourceRight: TDataSource
@@ -410,6 +431,12 @@ inherited frmBaseDualList: TfrmBaseDualList
     end
     object MenuItem7: TMenuItem
       Action = actLeftFilter
+    end
+    object pmnuGetCountRight: TMenuItem
+      Action = actGetCount
+    end
+    object pmnuCopyBufferRight: TMenuItem
+      Action = actCopyBuffer
     end
   end
   object QueryLeft: TpFIBDataSet
