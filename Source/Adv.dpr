@@ -27,7 +27,8 @@ uses
   FilterSide in 'Filters\FilterSide.pas' {frmFilterSide},
   EnterDate in 'EnterDate.pas' {frmEnterDate},
   edtAdv in 'Sprav\edtAdv.pas' {frmEdtAdv},
-  edtSprSide in 'Sprav\edtSprSide.pas' {frmEdtSprSide};
+  edtSprSide in 'Sprav\edtSprSide.pas' {frmEdtSprSide},
+  edtSprContract in 'Sprav\edtSprContract.pas' {frmEdtSprContract};
 
 {$R *.res}
 

@@ -15,7 +15,8 @@ interface
 uses
   SysUtils, Classes, DB, frxClass, frxDBSet, frxExportXLS,
   frxDMPExport, frxExportDBF, frxExportODF, frxExportMail, frxExportImage,
-  frxExportRTF, frxExportXML, frxExportHTML, frxExportPDF;
+  frxExportRTF, frxExportXML, frxExportHTML, frxExportPDF, FIBDataSet,
+  pFIBDataSet;
 
 type
   TdmReport = class(TDataModule)
@@ -33,6 +34,8 @@ type
     frxODSExport1: TfrxODSExport;
     frxODTExport1: TfrxODTExport;
     frxDBFExport1: TfrxDBFExport;
+    qrFreeAdv: TpFIBDataSet;
+    qrAdvwoSide: TpFIBDataSet;
   private
     { Private declarations }
   public

@@ -35,7 +35,7 @@ function EnterPassword : Boolean;
 
 implementation
 
-uses DataModule, fg_Util, Variants, rUtils;
+uses DataModule, fg_Util, Variants, rUtils, FileUtil;
 
 {$R *.DFM}
 
@@ -120,6 +120,10 @@ begin
    end;
    // Получить системную дату
    sysdate:=GetResSqlFIB(dm.oDbAdv,'select current_date Result from rdb$database');
+   // Получить временный каталог
+   lTempDir:=GetTempDir;
+   if lTempDir[Length(lTempDir)]<>'\' then
+     lTempDir:=lTempDir+'\';
   finally
    Screen.Cursor:=crDefault
   end;

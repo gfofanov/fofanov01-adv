@@ -49,30 +49,17 @@ procedure TfrmEdtAdv.btnChooseContractClick(Sender: TObject);
     id_contract : Longint;
     bForm : TfrmBaseList;
     ValueFields : array [1..5] of Variant;
-    fForm : TfrmBaseSimpleFilter;
-    FilterString : string;
 begin
   inherited;
   bForm:=BrokerListForm.CreateList(Self, cContract, doViewCloseList);
   if bForm=nil then
     Exit;
   try
-   FilterString:='';
-   fForm:=BrokerSimpleFilter.CreateFilter(self, cSimpleFilterContract, doEditFilter);
-   if fForm=nil then
-     Exit;
-   try
-    if fForm.ShowModal<>mrOk then
-      Exit;
-    FilterString:=fForm.GetFilterFromReestr;
-    bForm.Query.ParamByName('filter').AsString:=FilterString+' and c.type_contractor=1 ';
-   finally
-     FreeAndNil(fForm);
-   end;
+   // Вызвать фильтр. Он откроет датасет
+   bForm.actFilterExecute(Self);
 
    bForm.FormAction:=doChooseList;
    bForm.DoCommitOnPost:=False;
-   bForm.Query.Open;
    if bForm.ShowModal<>mrYes then
      Exit;
    id_contract:=bForm.GetID;

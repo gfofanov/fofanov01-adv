@@ -6,22 +6,23 @@ object dmReport: TdmReport
   Width = 447
   object dsReport: TDataSource
     AutoEdit = False
+    DataSet = qrFreeAdv
     Left = 152
     Top = 24
   end
   object frxReport1: TfrxReport
     Version = '4.9'
-    DotMatrixReport = True
-    EngineOptions.DoublePass = True
+    DotMatrixReport = False
     EngineOptions.UseFileCache = True
     IniFile = '\Software\Fast Reports'
     PreviewOptions.AllowEdit = False
-    PreviewOptions.Buttons = [pbPrint, pbExport, pbZoom, pbFind, pbPageSetup, pbTools, pbNavigator]
+    PreviewOptions.Buttons = [pbPrint, pbSave, pbExport, pbZoom, pbFind, pbPageSetup, pbTools, pbNavigator]
     PreviewOptions.Zoom = 1.000000000000000000
+    PreviewOptions.ZoomMode = zmPageWidth
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 38903.438833981500000000
-    ReportOptions.LastChange = 38910.436784710600000000
+    ReportOptions.CreateDate = 40553.516914965300000000
+    ReportOptions.LastChange = 40553.518667708300000000
     ScriptLanguage = 'PascalScript'
     StoreInDFM = False
     Left = 24
@@ -171,5 +172,53 @@ object dmReport: TdmReport
     OEMCodepage = False
     Left = 152
     Top = 192
+  end
+  object qrFreeAdv: TpFIBDataSet
+    SelectSQL.Strings = (
+      '-- dmReport.qrFreeAdv'
+      'select a.address_name, r.name_contractor'
+      '       , count(*) c_all'
+      
+        '       , sum(case when s.date_fact is not null then 1 else 0 end' +
+        ') c_full'
+      
+        '       , sum(case when s.date_fact is null then 1 else 0 end) c_' +
+        'empty'
+      '  from adv a,  contract c,  contractor r, side s'
+      '  where a.id_contract=c.id_contract'
+      '        and c.id_contractor=r.id_contractor'
+      '        and a.id_adv=s.id_adv'
+      '        and a.id_adv in (select id_adv from ('
+      '        select id_adv'
+      '               , count(*) c_all'
+      
+        '               , sum(case when date_fact is not null then 1 else' +
+        ' 0 end) c_full'
+      
+        '               , sum(case when date_fact is null then 1 else 0 e' +
+        'nd) c_empty'
+      '          from side group by id_adv)'
+      '                             where c_all>c_full)'
+      '  group by a.address_name, r.name_contractor')
+    Transaction = dm.pFIBTransaction1
+    Database = dm.oDbAdv
+    Left = 24
+    Top = 256
+  end
+  object qrAdvwoSide: TpFIBDataSet
+    SelectSQL.Strings = (
+      '-- dmReport.qrFreeAdv'
+      'select a.address_name, r.name_contractor'
+      '  from adv a,  contract c,  contractor r'
+      '  where a.id_contract=c.id_contract'
+      '        and c.id_contractor=r.id_contractor'
+      
+        '        and not exists (select 1 from side s where s.id_adv=a.id' +
+        '_adv)'
+      '  group by a.address_name, r.name_contractor')
+    Transaction = dm.pFIBTransaction1
+    Database = dm.oDbAdv
+    Left = 88
+    Top = 256
   end
 end

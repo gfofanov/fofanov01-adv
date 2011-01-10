@@ -86,10 +86,17 @@ type
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
-    N17: TMenuItem;
     N18: TMenuItem;
     QueryLeft: TpFIBDataSet;
     QueryRight: TpFIBDataSet;
+    actGetCount: TAction;
+    mnuGetCount: TMenuItem;
+    actCopyBuffer: TAction;
+    mnuCopyBuffer: TMenuItem;
+    pmnuGetCountLeft: TMenuItem;
+    pmnuCopyBufferLeft: TMenuItem;
+    pmnuGetCountRight: TMenuItem;
+    pmnuCopyBufferRight: TMenuItem;
     procedure actLeftFilterExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -112,6 +119,8 @@ type
     procedure actEditExecute(Sender: TObject);
     procedure actNewExecute(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
+    procedure actGetCountExecute(Sender: TObject);
+    procedure actCopyBufferExecute(Sender: TObject);
   private
     { Private declarations }
     fLeftNameTable : string; // Имя таблицы
@@ -359,6 +368,21 @@ begin
   end;
 end;
 
+procedure TfrmBaseDualList.actCopyBufferExecute(Sender: TObject);
+begin
+  inherited;
+  if fCurrentQuery=QueryLeft then
+    begin
+      GridEhCopyToBuffer(DBGridEh1);
+      DBGridEh1.SetFocus;
+    end
+  else
+    begin
+      GridEhCopyToBuffer(DBGridEh2);
+      DBGridEh2.SetFocus;
+    end;
+end;
+
 procedure TfrmBaseDualList.actDeleteExecute(Sender: TObject);
 begin
   inherited;
@@ -523,6 +547,37 @@ procedure TfrmBaseDualList.actExitExecute(Sender: TObject);
 begin
   inherited;
   Close;
+end;
+
+procedure TfrmBaseDualList.actGetCountExecute(Sender: TObject);
+  var
+    num_record : Longint;
+    sqlField : string;
+begin
+  inherited;
+  // Показать кол-во записей
+  try
+   fCurrentQuery.DisableControls;
+   fCurrentQuery.Close;
+   // Сохраняем перечень полей в SQL-запросе для того, чтобы его изменить.
+   // Это нужно потому, что, если в SQL-запросе есть одинаковые поля,
+   // select count(*) выдаст ошибку - таково свойство вложенных запросов в Firebird
+   sqlField:=fCurrentQuery.FieldsClause;
+   // Изменяем перечень полей. При этом датасет должен быть закрыт
+   fCurrentQuery.FieldsClause:='1 as field1';
+   Screen.Cursor:=crSQLWait;
+   try
+    num_record:=fCurrentQuery.RecordCountFromSrv;
+   finally
+    Screen.Cursor:=crDefault;
+   end;
+  finally
+   // Восстанавливаем перечень полей
+   fCurrentQuery.FieldsClause:=sqlField;
+   fCurrentQuery.Open;
+   fCurrentQuery.EnableControls;
+  end;
+  ShowMessage('Кол-во записей='+IntToStr(num_record));
 end;
 
 procedure TfrmBaseDualList.actChooseExecute(Sender: TObject);

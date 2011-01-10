@@ -26,6 +26,7 @@ var
   ID_USER : Longint;
   DirReports : string; // Каталог с отчетами
   cHelpFile : string; // Путь к hlp-файлу
+  lTempDir : string; // Временный каталог
 
 function fgGetCmdLineArg(const Switch: string; SwitchChars: TCharSet): string;
 

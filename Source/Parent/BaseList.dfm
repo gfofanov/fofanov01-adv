@@ -1,14 +1,13 @@
 inherited frmBaseList: TfrmBaseList
   ActiveControl = DBGridEh1
   Caption = 'frmBaseList'
-  ClientHeight = 437
   Menu = MainMenu1
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 16
   object StatusBar1: TStatusBar [0]
     Left = 0
-    Top = 418
+    Top = 437
     Width = 688
     Height = 19
     Panels = <>
@@ -119,7 +118,7 @@ inherited frmBaseList: TfrmBaseList
     Left = 0
     Top = 29
     Width = 688
-    Height = 389
+    Height = 408
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
@@ -127,7 +126,7 @@ inherited frmBaseList: TfrmBaseList
       Left = 0
       Top = 0
       Width = 688
-      Height = 389
+      Height = 408
       Align = alClient
       AllowedSelections = [gstRecordBookmarks]
       ColumnDefValues.Title.TitleButton = True
@@ -304,6 +303,12 @@ inherited frmBaseList: TfrmBaseList
     end
     object N20: TMenuItem
       Action = actPrintGrid
+    end
+    object N21: TMenuItem
+      Action = actGetCount
+    end
+    object N22: TMenuItem
+      Action = actCopyBuffer
     end
   end
   object MainMenu1: TMainMenu
