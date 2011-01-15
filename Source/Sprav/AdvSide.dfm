@@ -416,6 +416,7 @@ inherited frmAdvSide: TfrmAdvSide
       '         end type_contractor_'
       '       , case when side.type_side=1 then '#39#1041#1072#1085#1085#1077#1088#39
       '              when side.type_side=2 then '#39#1057#1074#1077#1090#1086#1074#1072#1103#39
+      '              when side.type_side=3 then '#39#1060#1072#1085#1077#1088#1072#39
       '              else '#39#1053#1077#1080#1079#1074#1077#1089#1090#1085#1086#39
       '         end type_side_'
       '       , case when side.location_side=1 then '#39#1055#1077#1088#1077#1076#1085#1103#1103#39

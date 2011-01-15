@@ -207,10 +207,12 @@ inherited frmEdtSprSide: TfrmEdtSprSide
       EditButtons = <>
       Items.Strings = (
         #1041#1072#1085#1085#1077#1088
-        #1057#1074#1077#1090#1086#1074#1072#1103)
+        #1057#1074#1077#1090#1086#1074#1072#1103
+        #1060#1072#1085#1077#1088#1072)
       KeyItems.Strings = (
         '1'
-        '2')
+        '2'
+        '3')
       ShowHint = True
       TabOrder = 2
       Visible = True
