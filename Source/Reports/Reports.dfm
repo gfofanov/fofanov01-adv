@@ -22,7 +22,7 @@ object dmReport: TdmReport
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 40553.516914965300000000
-    ReportOptions.LastChange = 40553.518667708300000000
+    ReportOptions.LastChange = 40563.354879189810000000
     ScriptLanguage = 'PascalScript'
     StoreInDFM = False
     Left = 24
@@ -207,7 +207,7 @@ object dmReport: TdmReport
   end
   object qrAdvwoSide: TpFIBDataSet
     SelectSQL.Strings = (
-      '-- dmReport.qrFreeAdv'
+      '-- dmReport.qrAdvwoSide'
       'select a.address_name, r.name_contractor'
       '  from adv a,  contract c,  contractor r'
       '  where a.id_contract=c.id_contract'
@@ -219,6 +219,35 @@ object dmReport: TdmReport
     Transaction = dm.pFIBTransaction1
     Database = dm.oDbAdv
     Left = 88
+    Top = 256
+  end
+  object qrAllAdv: TpFIBDataSet
+    SelectSQL.Strings = (
+      '-- dmReport.qrAllAdv'
+      'select a.address_name'
+      
+        '       , (select count(*) from side s where id_adv=a.id_adv) c_a' +
+        'll'
+      '  from adv a'
+      '  order by a.address_name')
+    Transaction = dm.pFIBTransaction1
+    Database = dm.oDbAdv
+    Left = 160
+    Top = 256
+  end
+  object pFIBDataSet1: TpFIBDataSet
+    SelectSQL.Strings = (
+      '-- dmReport.qr'
+      'select a.address_name'
+      
+        '       , (select count(*) from side where id_adv=a.id_adv) c_sid' +
+        'e'
+      '  from adv a'
+      '  where a.id_adv in (select id_adv from side where type_side=2)'
+      '  order by a.address_name')
+    Transaction = dm.pFIBTransaction1
+    Database = dm.oDbAdv
+    Left = 224
     Top = 256
   end
 end

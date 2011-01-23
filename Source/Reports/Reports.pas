@@ -36,6 +36,8 @@ type
     frxDBFExport1: TfrxDBFExport;
     qrFreeAdv: TpFIBDataSet;
     qrAdvwoSide: TpFIBDataSet;
+    qrAllAdv: TpFIBDataSet;
+    pFIBDataSet1: TpFIBDataSet;
   private
     { Private declarations }
   public

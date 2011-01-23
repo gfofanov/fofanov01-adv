@@ -45,6 +45,8 @@ type
     N41: TMenuItem;
     actRepAdvwoSide: TAction;
     N42: TMenuItem;
+    actRepAllAdv: TAction;
+    N43: TMenuItem;
     procedure actDateFactSetExecute(Sender: TObject);
     procedure actDateFactUnsetExecute(Sender: TObject);
     procedure ActionList1Update(Action: TBasicAction; var Handled: Boolean);
@@ -57,6 +59,7 @@ type
     procedure actDelPhotoAdvExecute(Sender: TObject);
     procedure actDelPhotoSideExecute(Sender: TObject);
     procedure actRepAdvwoSideExecute(Sender: TObject);
+    procedure actRepAllAdvExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -197,6 +200,18 @@ begin
   dmReport.frxReport1.LoadFromFile(DirReports+'AdvwoSide.fr3');
   dmReport.frxReport1.ShowReport;
   dmReport.qrAdvwoSide.Close;
+end;
+
+procedure TfrmAdvSide.actRepAllAdvExecute(Sender: TObject);
+begin
+  inherited;
+  dmReport.dsReport.DataSet:=dmReport.qrAllAdv;
+  if dmReport.qrAllAdv.Active then
+    dmReport.qrAllAdv.Close;
+  dmReport.qrAllAdv.Open;
+  dmReport.frxReport1.LoadFromFile(DirReports+'AllAdv.fr3');
+  dmReport.frxReport1.ShowReport;
+  dmReport.qrAllAdv.Close;
 end;
 
 procedure TfrmAdvSide.actRepFreeAdvExecute(Sender: TObject);
