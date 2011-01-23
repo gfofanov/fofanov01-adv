@@ -301,6 +301,12 @@ inherited frmAdvSide: TfrmAdvSide
       Hint = #1050#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080' '#1073#1077#1079' '#1089#1090#1086#1088#1086#1085'|'#1054#1090#1095#1077#1090' '#1087#1086' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1103#1084' '#1073#1077#1079' '#1089#1090#1086#1088#1086#1085
       OnExecute = actRepAdvwoSideExecute
     end
+    object actRepAllAdv: TAction
+      Category = 'Reports'
+      Caption = #1042#1089#1077' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080
+      Hint = #1042#1089#1077' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1080'|'#1054#1090#1095#1077#1090' '#1089' '#1087#1077#1088#1077#1095#1085#1077#1084' '#1088#1077#1082#1083#1072#1084#1085#1099#1093' '#1082#1086#1085#1089#1090#1088#1091#1082#1094#1080#1081
+      OnExecute = actRepAllAdvExecute
+    end
   end
   inherited MainMenu1: TMainMenu
     object N35: TMenuItem [1]
@@ -310,6 +316,9 @@ inherited frmAdvSide: TfrmAdvSide
       end
       object N42: TMenuItem
         Action = actRepAdvwoSide
+      end
+      object N43: TMenuItem
+        Action = actRepAllAdv
       end
     end
     object N19: TMenuItem [2]
