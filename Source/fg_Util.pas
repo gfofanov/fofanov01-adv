@@ -55,6 +55,12 @@ function GetResSqlFIB(Session : TpFIBDatabase; const v_Sql : String ) : Variant;
 // Выполняет SQL запрос, возвращает поле с именем 'Result'
 // Использует связанные переменные
 
+function GetResBindSqlFib(v_Session : TpFIBDatabase; const v_Sql : string;
+                       const v_BindVar : array of string;
+                       const v_BindValue : array of Variant) : Variant;
+// Выполняет SQL запрос, возвращает поле с именем 'Result'
+// Использует связанные переменные
+
 //procedure ExecDOASQL(aSession : TOracleSession; const strSQL : string);
 // Выполнить SQL запрос
 
@@ -316,6 +322,32 @@ begin
      Free;
     end
 end;}
+
+function GetResBindSqlFib(v_Session : TpFIBDatabase; const v_Sql : string;
+                       const v_BindVar : array of string;
+                       const v_BindValue : array of Variant) : Variant;
+// Выполняет SQL запрос, возвращает поле с именем 'Result'
+// Использует связанные переменные
+  var
+    i : Integer;
+begin
+  Result:=Null;
+  with TpFIBQuery.Create(Application) do
+    try
+     Database:=v_Session;
+     Transaction:=v_Session.DefaultTransaction;
+     SQL.Add(v_Sql);
+     for i:=Low(v_BindVar) to High(v_BindVar) do
+       begin
+         ParamByName(v_BindVar[i]).AsVariant:=v_BindValue[i];
+       end;
+     ExecQuery;
+     if not EOF then
+       Result:=FieldByName('Result').AsVariant;
+    finally
+     Free;
+    end
+end;
 
 {procedure ExecDOASQL(aSession : TOracleSession; const strSQL : string);
 // Выполнить SQL запрос
