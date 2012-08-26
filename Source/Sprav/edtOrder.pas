@@ -13,8 +13,6 @@ type
     dbedtNum_Order: TDBEdit;
     lblDate_Order: TLabel;
     dbedtDate_Order: TDBDateTimeEditEh;
-    lblName_Customer: TLabel;
-    dbedtName_Customer: TDBEdit;
     lblPhone_Customer: TLabel;
     dbedtPhone_Customer: TDBEdit;
     lblType_Order: TLabel;
@@ -35,6 +33,19 @@ type
     dbedtPlan_Date_Order: TDBDateTimeEditEh;
     lblFact_Date_Order: TLabel;
     dbedtFact_Date_Order: TDBDateTimeEditEh;
+    grpContractor: TGroupBox;
+    btnChooseContract: TButton;
+    lblInn: TLabel;
+    dbedtInn: TDBEdit;
+    lblKpp: TLabel;
+    dbedtKpp: TDBEdit;
+    lblName_Customer: TLabel;
+    dbedtName_Customer: TDBEdit;
+    lblSum_Discount: TLabel;
+    dbedtSum_Discount: TDBNumberEditEh;
+    lblDiscount_Perc: TLabel;
+    dbedtDiscount_Perc: TDBNumberEditEh;
+    procedure btnChooseContractClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,11 +59,50 @@ var
 implementation
 
 uses
-  DataModule, Fg_util;
+  DataModule, Fg_util, BaseList;
 
 {$R *.dfm}
 
 { TfrmEdtOrder }
+
+procedure TfrmEdtOrder.btnChooseContractClick(Sender: TObject);
+  var
+    id_contractor : Longint;
+    bForm : TfrmBaseList;
+    ValueFields : array [1..4] of Variant;
+begin
+  inherited;
+  bForm:=BrokerListForm.CreateList(Self, cContractor, doViewCloseList);
+  if bForm=nil then
+    Exit;
+  try
+   // Вызвать фильтр. Он откроет датасет
+   bForm.actFilterExecute(Self);
+
+   bForm.FormAction:=doChooseList;
+   bForm.DoCommitOnPost:=False;
+   if bForm.ShowModal<>mrYes then
+     Exit;
+   id_contractor:=bForm.GetID;
+   if id_contractor>0 then
+     begin
+       DataSource.DataSet.FieldByName('id_contractor').AsInteger:=id_contractor;
+       GetBindMultField(dm.oDbAdv, 'select inn, kpp, name_contractor, phone_contractor from contractor c where c.id_contractor=:id_contractor',
+                        ['inn', 'kpp', 'name_contractor','phone_contractor'],
+                        ValueFields,
+                        ['id_contractor'],
+                        [id_contractor]);
+       DataSource.DataSet.FieldByName('inn').AsVariant:=ValueFields[1];
+       DataSource.DataSet.FieldByName('kpp').AsVariant:=ValueFields[2];
+       DataSource.DataSet.FieldByName('name_contractor').AsVariant:=ValueFields[3];
+       // Скопировать телефон
+       DataSource.DataSet.FieldByName('phone_customer').AsVariant:=ValueFields[4];
+     end;
+  finally
+   bForm.Free;
+  end;
+  dbedtPhone_Customer.SetFocus;
+end;
 
 constructor TfrmEdtOrder.Create(aOwner: TComponent; ActionForm: TActionEditForm;
   Query: TpFIBDataSet);

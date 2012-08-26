@@ -24,9 +24,9 @@ inherited frmFilterOrder: TfrmFilterOrder
     object lblName_Customer: TLabel
       Left = 16
       Top = 176
-      Width = 76
+      Width = 47
       Height = 16
-      Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090
+      Caption = #1050#1083#1080#1077#1085#1090
     end
     object chkFact_Date_Order: TCheckBox
       Left = 16

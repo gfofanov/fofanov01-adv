@@ -46,7 +46,7 @@ type
     constructor Create(aOwner : TComponent; ActionForm : TActionEditForm; Query : TpFIBDataSet); reintroduce; virtual;
     property BeforePost : procBeforePost read fBeforePost Write fBeforePost; // Перед Post
     property AfterPost : procAfterPost read fAfterPost Write fAfterPost; // После Post
-    property AfterRestore : procAfterRestoreFields read fAfterRestore Write fAfterRestore; // После Post
+    property AfterRestore : procAfterRestoreFields read fAfterRestore Write fAfterRestore; // После восстановления полей
     property isChooseDouble : Boolean read fIsChooseDouble Write fIsChooseDouble;
     procedure HideBevel;
   end;

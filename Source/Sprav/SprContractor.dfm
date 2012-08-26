@@ -2,10 +2,19 @@ inherited frmSprContractor: TfrmSprContractor
   Left = 241
   Top = 170
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1082#1086#1085#1090#1088#1072#1075#1077#1085#1090#1086#1074
+  ClientWidth = 710
   PixelsPerInch = 96
   TextHeight = 16
+  inherited StatusBar1: TStatusBar
+    Width = 710
+  end
+  inherited ToolBar1: TToolBar
+    Width = 710
+  end
   inherited Panel1: TPanel
+    Width = 710
     inherited DBGridEh1: TDBGridEh
+      Width = 710
       Columns = <
         item
           EditButtons = <>
@@ -25,6 +34,13 @@ inherited frmSprContractor: TfrmSprContractor
           Footers = <>
           Title.Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
           Width = 344
+        end
+        item
+          EditButtons = <>
+          FieldName = 'phone_contractor'
+          Footers = <>
+          Title.Caption = #1058#1077#1083#1077#1092#1086#1085
+          Width = 108
         end
         item
           EditButtons = <>

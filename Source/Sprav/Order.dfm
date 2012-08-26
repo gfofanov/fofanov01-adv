@@ -24,9 +24,9 @@ inherited frmOrder: TfrmOrder
         end
         item
           EditButtons = <>
-          FieldName = 'NAME_CUSTOMER'
+          FieldName = 'NAME_Contractor'
           Footers = <>
-          Title.Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090
+          Title.Caption = #1050#1083#1080#1077#1085#1090
           Width = 463
         end
         item
@@ -200,10 +200,13 @@ inherited frmOrder: TfrmOrder
     SelectSQL.Strings = (
       '-- frmOrder.QueryLeft'
       'select order_doc.*, t.name_type_order, s.name_status'
+      '     , c.*'
       '  from order_doc, spr_type_order t, spr_state_order s'
+      '     , contractor c'
       '  where 0=0'
       '        and order_doc.id_spr_type_order=t.id_spr_type_order'
       '        and order_doc.id_spr_state_order=s.id_spr_state_order'
+      '        and order_doc.id_contractor=c.id_contractor'
       '        @@id@'
       '        @@filter@'
       '  @@sortphrase@ @@sortfield@')

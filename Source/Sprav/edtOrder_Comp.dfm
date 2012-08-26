@@ -25,18 +25,30 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
   object lblSum_Order: TLabel [2]
     Left = 8
     Top = 80
-    Width = 70
+    Width = 80
     Height = 32
     Caption = #1057#1091#1084#1084#1072' '#1073#1077#1079#13#10#1089#1082#1080#1076#1082#1080
     FocusControl = dbedtSum_Mat
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblSum_Paid: TLabel [3]
     Left = 220
     Top = 88
-    Width = 91
+    Width = 104
     Height = 16
     Caption = #1057#1091#1084#1084#1072' '#1089#1082#1080#1076#1082#1080
     FocusControl = dbedtSum_Discount
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblSum_Unpaid: TLabel [4]
     Left = 463
@@ -234,7 +246,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     OnChange = dbedtQuant_MatChange
   end
   object dbedtPrice_Mat: TDBNumberEditEh [22]
-    Left = 342
+    Left = 353
     Top = 50
     Width = 107
     Height = 24
