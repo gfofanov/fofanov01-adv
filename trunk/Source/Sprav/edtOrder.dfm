@@ -187,6 +187,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     Height = 24
     DataField = 'num_order'
     DataSource = DataSource
+    ReadOnly = True
     TabOrder = 0
   end
   object dbedtDate_Order: TDBDateTimeEditEh [18]
@@ -270,6 +271,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     DataField = 'sum_order'
     DataSource = DataSource
     EditButtons = <>
+    ReadOnly = True
     ShowHint = True
     TabOrder = 6
     Visible = True
@@ -286,6 +288,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     ShowHint = True
     TabOrder = 9
     Visible = True
+    OnChange = dbedtSum_PaidChange
   end
   object dbedtSum_Unpaid: TDBNumberEditEh [24]
     Left = 364
@@ -296,6 +299,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     DataField = 'sum_unpaid'
     DataSource = DataSource
     EditButtons = <>
+    ReadOnly = True
     ShowHint = True
     TabOrder = 10
     Visible = True
@@ -422,6 +426,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     DataField = 'sum_discount'
     DataSource = DataSource
     EditButtons = <>
+    ReadOnly = True
     ShowHint = True
     TabOrder = 8
     Visible = True

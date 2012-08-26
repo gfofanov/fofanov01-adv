@@ -46,6 +46,7 @@ type
     lblDiscount_Perc: TLabel;
     dbedtDiscount_Perc: TDBNumberEditEh;
     procedure btnChooseContractClick(Sender: TObject);
+    procedure dbedtSum_PaidChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -137,6 +138,13 @@ begin
                DataSource.DataSet.FieldByName('id_spr_state_order').AsInteger:=dsState_Order.DataSet.FieldByName('id_spr_state_order').AsInteger;
              end;
   end;
+end;
+
+procedure TfrmEdtOrder.dbedtSum_PaidChange(Sender: TObject);
+begin
+  inherited;
+  if (DataSource.DataSet.State in [dsEdit, dsInsert]) then
+    DataSource.DataSet.FieldByName('sum_unpaid').AsCurrency:=DataSource.DataSet.FieldByName('sum_order').AsCurrency-DataSource.DataSet.FieldByName('sum_paid').AsCurrency;
 end;
 
 //******************* OrderFormCreator *************************
