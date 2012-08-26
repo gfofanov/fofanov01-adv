@@ -1,13 +1,3 @@
-{*****************************************************************************
- *
- * Project  : Mat_Dept
- * Unit Name: fg_Const
- * Purpose  : Разные константы для работы
- * Create   : 14.06.06
- * History  :
- *
- *****************************************************************************}
-
 unit fg_Const;
 
 interface
@@ -49,7 +39,7 @@ const
   MaxTripleListType=5; // Количество тройных форм в проекте
   MaxSimpleFilter=35; // Количество фильтров в проекте
 
-// Типы объектов
+  // Типы объектов
 
   // Формы
 
@@ -57,10 +47,17 @@ const
   cContract = 2; // Справочник договоров
   cAdv = 3; // Рекламная конструкция
   cSide = 4; // Сторона рекламной конструкции
+  cMeasure = 5; // Справочник единиц измерения
+  cSpr_Mat = 6; // Материал и работа
+  cMat_Price = 7; // Цена материала или работы
+  cOrder_Doc = 8; // Заказ
+  cOrder_Comp = 9; // Состав заказов
 
   // Двойные формы
 
   cAdvSide = 1; // Рекламные конструкции и их стороны
+  cSprMat_Price = 2; // Материалы, работа и цены
+  cOrder = 3; // Заказы
 
 
   // Тройные формы
@@ -75,6 +72,11 @@ const
   cSimpleFilterContract = 2;
   cSimpleFilterAdv = 3;
   cSimpleFilterSide = 4;
+  cSimpleFilterMeasure = 5;
+  cSimpleFilterMat = 6;
+  cSimpleFilterMat_Price = 7;
+  cSimpleFilterOrder = 8;
+  cSimpleFilterOrder_Comp = 9;
 
 implementation
 

@@ -113,7 +113,6 @@ object dmReport: TdmReport
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
-    ExportEMF = True
     Wysiwyg = True
     Creator = 'FastReport'
     SuppressPageHeadersFooters = False
@@ -145,7 +144,6 @@ object dmReport: TdmReport
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
-    ExportEMF = True
     Background = True
     Creator = 'FastReport'
     EmptyLines = True
@@ -157,7 +155,6 @@ object dmReport: TdmReport
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
-    ExportEMF = True
     Background = True
     Creator = 'FastReport'
     EmptyLines = True

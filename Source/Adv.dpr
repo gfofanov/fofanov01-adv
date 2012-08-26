@@ -28,7 +28,14 @@ uses
   EnterDate in 'EnterDate.pas' {frmEnterDate},
   edtAdv in 'Sprav\edtAdv.pas' {frmEdtAdv},
   edtSprSide in 'Sprav\edtSprSide.pas' {frmEdtSprSide},
-  edtSprContract in 'Sprav\edtSprContract.pas' {frmEdtSprContract};
+  edtSprContract in 'Sprav\edtSprContract.pas' {frmEdtSprContract},
+  SprMeasure in 'Sprav\SprMeasure.pas' {frmSprMeasure},
+  edtSprMeasure in 'Sprav\edtSprMeasure.pas' {frmEdtSprMeasure},
+  SprMat_Price in 'Sprav\SprMat_Price.pas' {frmSprMat_Price},
+  Order in 'Sprav\Order.pas' {frmOrder},
+  FilterOrder in 'Filters\FilterOrder.pas' {frmFilterOrder},
+  FilterOrder_Comp in 'Filters\FilterOrder_Comp.pas' {frmFilterOrder_Comp},
+  edtOrder in 'Sprav\edtOrder.pas' {frmEdtOrder};
 
 {$R *.res}
 
@@ -38,7 +45,7 @@ begin
   Application.Initialize;
   ShortDateFormat:='DD.MM.YYYY';
   Application.UpdateFormatSettings:=False;
-  Application.Title := 'АС Учет рекламных конструкций';
+  Application.Title := 'Рекламно-производственная фирма "Лавр"';
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TdmReport, dmReport);
   if EnterPassword then
