@@ -35,7 +35,8 @@ uses
   Order in 'Sprav\Order.pas' {frmOrder},
   FilterOrder in 'Filters\FilterOrder.pas' {frmFilterOrder},
   FilterOrder_Comp in 'Filters\FilterOrder_Comp.pas' {frmFilterOrder_Comp},
-  edtOrder in 'Sprav\edtOrder.pas' {frmEdtOrder};
+  edtOrder in 'Sprav\edtOrder.pas' {frmEdtOrder},
+  edtOrder_Comp in 'Sprav\edtOrder_Comp.pas' {frmEdtOrder_Comp};
 
 {$R *.res}
 

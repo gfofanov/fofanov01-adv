@@ -1,36 +1,54 @@
 inherited frmEdtOrder: TfrmEdtOrder
   Caption = 'frmEdtOrder'
   ClientHeight = 339
-  ClientWidth = 619
+  ClientWidth = 634
   PixelsPerInch = 96
   TextHeight = 16
   inherited Bevel1: TBevel
     Top = 289
-    Width = 619
+    Width = 634
   end
   object lblNumOrder: TLabel [1]
     Left = 8
     Top = 16
-    Width = 43
+    Width = 49
     Height = 16
     Caption = #1053#1086#1084#1077#1088
     FocusControl = dbedtNum_Order
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblDate_Order: TLabel [2]
     Left = 332
     Top = 16
-    Width = 32
+    Width = 37
     Height = 16
     Caption = #1044#1072#1090#1072
     FocusControl = dbedtDate_Order
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblName_Customer: TLabel [3]
     Left = 8
     Top = 56
-    Width = 47
+    Width = 54
     Height = 16
     Caption = #1050#1083#1080#1077#1085#1090
     FocusControl = dbedtName_Customer
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblPhone_Customer: TLabel [4]
     Left = 8
@@ -43,42 +61,72 @@ inherited frmEdtOrder: TfrmEdtOrder
   object lblType_Order: TLabel [5]
     Left = 8
     Top = 128
-    Width = 75
+    Width = 86
     Height = 16
     Caption = #1042#1080#1076' '#1079#1072#1082#1072#1079#1072
     FocusControl = dbcbbType_Order
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblState_order: TLabel [6]
     Left = 312
     Top = 128
-    Width = 96
+    Width = 110
     Height = 16
     Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1082#1072#1079#1072
     FocusControl = dbcbbState_Order
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblSum_Order: TLabel [7]
     Left = 8
     Top = 168
-    Width = 93
+    Width = 106
     Height = 16
     Caption = #1057#1091#1084#1084#1072' '#1079#1072#1082#1072#1079#1072
     FocusControl = dbedtSum_Order
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblSum_Paid: TLabel [8]
-    Left = 207
+    Left = 205
     Top = 168
-    Width = 66
+    Width = 75
     Height = 16
     Caption = #1054#1087#1083#1072#1095#1077#1085#1086
     FocusControl = dbedtSum_Paid
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblSum_Unpaid: TLabel [9]
     Left = 383
     Top = 168
-    Width = 126
+    Width = 144
     Height = 16
     Caption = #1054#1089#1090#1072#1083#1086#1089#1100' '#1086#1087#1083#1072#1090#1080#1090#1100
     FocusControl = dbedtSum_Unpaid
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object lblComment_Order: TLabel [10]
     Left = 8
@@ -108,12 +156,12 @@ inherited frmEdtOrder: TfrmEdtOrder
     TabOrder = 12
   end
   inherited btnCancel: TBitBtn
-    Left = 521
+    Left = 536
     Top = 303
     TabOrder = 13
   end
   inherited btnClose: TBitBtn
-    Left = 260
+    Left = 267
     Top = 305
     TabOrder = 14
   end
@@ -142,7 +190,7 @@ inherited frmEdtOrder: TfrmEdtOrder
   object dbedtName_Customer: TDBEdit [18]
     Left = 64
     Top = 56
-    Width = 546
+    Width = 562
     Height = 24
     DataField = 'name_customer'
     DataSource = DataSource
@@ -185,7 +233,7 @@ inherited frmEdtOrder: TfrmEdtOrder
   object dbcbbState_Order: TDBLookupComboboxEh [21]
     Left = 424
     Top = 128
-    Width = 186
+    Width = 202
     Height = 24
     DataField = 'id_spr_state_order'
     DataSource = DataSource
@@ -234,8 +282,8 @@ inherited frmEdtOrder: TfrmEdtOrder
     Visible = True
   end
   object dbedtSum_Unpaid: TDBNumberEditEh [24]
-    Left = 513
-    Top = 170
+    Left = 528
+    Top = 168
     Width = 98
     Height = 24
     currency = True
@@ -249,7 +297,7 @@ inherited frmEdtOrder: TfrmEdtOrder
   object dbmmoComment_Order: TDBMemo [25]
     Left = 112
     Top = 200
-    Width = 498
+    Width = 514
     Height = 41
     DataField = 'comment_order'
     DataSource = DataSource

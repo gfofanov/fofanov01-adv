@@ -108,6 +108,9 @@
     <DCCReference Include="Sprav\edtOrder.pas">
       <Form>frmEdtOrder</Form>
     </DCCReference>
+    <DCCReference Include="Sprav\edtOrder_Comp.pas">
+      <Form>frmEdtOrder_Comp</Form>
+    </DCCReference>
     <DCCReference Include="Sprav\edtSprContract.pas">
       <Form>frmEdtSprContract</Form>
     </DCCReference>

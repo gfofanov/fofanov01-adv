@@ -222,6 +222,8 @@ inherited frmOrder: TfrmOrder
       '        @@id@'
       '        @@filter@'
       '  @@sortphrase@ @@sortfield@')
-    AutoUpdateOptions.GeneratorName = 'GEN__ID'
+    AutoUpdateOptions.UpdateTableName = 'ORDER_COMP'
+    AutoUpdateOptions.KeyFields = 'ID_ORDER_COMP'
+    AutoUpdateOptions.GeneratorName = 'GEN_ORDER_COMP_ID'
   end
 end

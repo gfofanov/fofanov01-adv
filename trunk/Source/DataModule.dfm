@@ -1,14 +1,14 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 248
-  Top = 130
+  Left = 254
+  Top = 142
   Height = 365
   Width = 445
   object imgProject: TImageList
     Left = 128
     Top = 24
     Bitmap = {
-      494C010114001600080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101140016000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -851,6 +851,17 @@ object dm: Tdm
     Transaction = pFIBTransaction1
     Database = oDbAdv
     Left = 128
+    Top = 136
+  end
+  object qrSpr_Mat: TpFIBDataSet
+    SelectSQL.Strings = (
+      'SELECT m.*, s.*'
+      'FROM'
+      '    SPR_MAT m, spr_measure s'
+      '  where m.id_spr_measure=s.id_spr_measure')
+    Transaction = pFIBTransaction1
+    Database = oDbAdv
+    Left = 200
     Top = 136
   end
 end

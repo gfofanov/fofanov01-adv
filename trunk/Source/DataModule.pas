@@ -14,6 +14,7 @@ type
     pFIBTransaction1: TpFIBTransaction;
     qrType_Order: TpFIBDataSet;
     qrState_Order: TpFIBDataSet;
+    qrSpr_Mat: TpFIBDataSet;
   private
     { Private declarations }
   public
