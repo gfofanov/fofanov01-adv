@@ -27,7 +27,7 @@ inherited frmOrder: TfrmOrder
           FieldName = 'NAME_Contractor'
           Footers = <>
           Title.Caption = #1050#1083#1080#1077#1085#1090
-          Width = 463
+          Width = 417
         end
         item
           EditButtons = <>
@@ -86,6 +86,19 @@ inherited frmOrder: TfrmOrder
           Footers = <>
           Title.Caption = #1057#1090#1072#1090#1091#1089' '#1079#1072#1082#1072#1079#1072
           Width = 209
+        end
+        item
+          EditButtons = <>
+          FieldName = 'sum_discount'
+          Footers = <>
+          Title.Caption = #1042' '#1090'.'#1095'. '#1089#1091#1084#1084#1072' '#1089#1082#1080#1076#1082#1080
+          Width = 82
+        end
+        item
+          EditButtons = <>
+          FieldName = 'discount_perc'
+          Footers = <>
+          Title.Caption = '% '#1089#1082#1080#1076#1082#1080
         end>
     end
     inherited Panel3: TPanel
@@ -177,18 +190,32 @@ inherited frmOrder: TfrmOrder
           FieldName = 'FACT_DATE'
           Footers = <>
           Title.Caption = #1044#1072#1090#1072' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1103
+          Width = 69
         end
         item
           EditButtons = <>
           FieldName = 'COMMENT_LINE'
           Footers = <>
           Title.Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081
+          Width = 103
         end
         item
           EditButtons = <>
           FieldName = 'NAME_SUPPLIER'
           Footers = <>
           Title.Caption = #1055#1086#1089#1090#1072#1074#1097#1080#1082' '#1084#1072#1090#1077#1088#1080#1072#1083#1072
+        end
+        item
+          EditButtons = <>
+          FieldName = 'sum_mat'
+          Footers = <>
+          Title.Caption = #1057#1091#1084#1084#1072' '#1073#1077#1079' '#1089#1082#1080#1076#1082#1080
+        end
+        item
+          EditButtons = <>
+          FieldName = 'sum_discount'
+          Footers = <>
+          Title.Caption = #1057#1091#1084#1084#1072' '#1089#1082#1080#1076#1082#1080
         end>
     end
     inherited Panel4: TPanel

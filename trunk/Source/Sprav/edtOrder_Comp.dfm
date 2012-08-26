@@ -204,13 +204,14 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     Visible = True
   end
   object dbedtSum_Mat: TDBNumberEditEh [19]
-    Left = 112
+    Left = 120
     Top = 88
     Width = 94
     Height = 24
     currency = True
     DataField = 'sum_mat'
     DataSource = DataSource
+    Enabled = False
     EditButtons = <>
     ReadOnly = True
     ShowHint = True
@@ -225,6 +226,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     currency = True
     DataField = 'sum_discount'
     DataSource = DataSource
+    Enabled = False
     EditButtons = <>
     ReadOnly = True
     ShowHint = True
@@ -232,13 +234,14 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     Visible = True
   end
   object dbedtSum_Itog: TDBNumberEditEh [21]
-    Left = 576
-    Top = 88
+    Left = 577
+    Top = 80
     Width = 98
     Height = 24
     currency = True
     DataField = 'sum_itog'
     DataSource = DataSource
+    Enabled = False
     EditButtons = <>
     ReadOnly = True
     ShowHint = True
@@ -310,6 +313,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     currency = False
     DataField = 'size_Area'
     DataSource = DataSource
+    Enabled = False
     EditButtons = <>
     ReadOnly = True
     ShowHint = True
@@ -382,12 +386,13 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     Filter = 'All files (*.*)|*.*|Jpeg files (*.jpg)|*.jpg'
   end
   object dbedtName_Measure: TDBEdit [31]
-    Left = 576
+    Left = 577
     Top = 50
     Width = 98
     Height = 24
     DataField = 'name_measure_price_short'
     DataSource = DataSource
+    Enabled = False
     ReadOnly = True
     TabOrder = 3
   end
