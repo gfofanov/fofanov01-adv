@@ -117,7 +117,6 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     Width = 112
     Height = 16
     Caption = #1050#1072#1095#1077#1089#1090#1074#1086' '#1087#1077#1095#1072#1090#1080
-    FocusControl = dbedtQuality_Print
   end
   object lblDate_Order: TLabel [12]
     Left = 260
@@ -298,20 +297,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     TabOrder = 9
     Visible = True
   end
-  object dbedtQuality_Print: TDBNumberEditEh [27]
-    Left = 144
-    Top = 208
-    Width = 94
-    Height = 24
-    currency = False
-    DataField = 'quality_print'
-    DataSource = DataSource
-    EditButtons = <>
-    ShowHint = True
-    TabOrder = 10
-    Visible = True
-  end
-  object dbedtDate_Order: TDBDateTimeEditEh [28]
+  object dbedtDate_Order: TDBDateTimeEditEh [27]
     Left = 400
     Top = 208
     Width = 121
@@ -324,7 +310,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     TabOrder = 11
     Visible = True
   end
-  object dbmmoComment_Order: TDBMemo [29]
+  object dbmmoComment_Order: TDBMemo [28]
     Left = 112
     Top = 248
     Width = 498
@@ -333,6 +319,24 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataSource = DataSource
     ScrollBars = ssVertical
     TabOrder = 12
+  end
+  object dbcbbQuality_Print: TDBComboBoxEh [29]
+    Left = 126
+    Top = 208
+    Width = 121
+    Height = 24
+    DataField = 'quality_print'
+    DataSource = DataSource
+    DropDownBox.Sizable = True
+    EditButtons = <>
+    Items.Strings = (
+      '360'
+      '540'
+      '720')
+    ShowHint = True
+    TabOrder = 10
+    Tooltips = True
+    Visible = True
   end
   inherited FormStorage: TFormStorage
     Left = 128

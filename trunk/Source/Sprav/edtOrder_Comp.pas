@@ -31,11 +31,11 @@ type
     lblSize_Area: TLabel;
     dbedtSize_Area: TDBNumberEditEh;
     lblQuality_Print: TLabel;
-    dbedtQuality_Print: TDBNumberEditEh;
     lblDate_Order: TLabel;
     dbedtDate_Order: TDBDateTimeEditEh;
     lblComment_Order: TLabel;
     dbmmoComment_Order: TDBMemo;
+    dbcbbQuality_Print: TDBComboBoxEh;
     procedure dbedtQuant_MatChange(Sender: TObject);
     procedure dbedtPrice_MatChange(Sender: TObject);
     procedure dbedtSizeXChange(Sender: TObject);
@@ -81,6 +81,8 @@ end;
 constructor TfrmEdtOrder_Comp.Create(aOwner: TComponent;
   ActionForm: TActionEditForm; Query: TpFIBDataSet);
 begin
+  if not dm.qrSpr_Mat.Active then
+    dm.qrSpr_Mat.Open;
   inherited Create(AOwner, ActionForm, Query);
   SetLength(FieldsRecord,1);
   FieldsRecord[0]:='quant_mat';

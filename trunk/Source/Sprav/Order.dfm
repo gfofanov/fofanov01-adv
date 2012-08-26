@@ -108,6 +108,7 @@ inherited frmOrder: TfrmOrder
     inherited DBGridEh2: TDBGridEh
       Width = 688
       Height = 183
+      OnDblClick = DBGridEh2DblClick
       Columns = <
         item
           EditButtons = <>
@@ -192,7 +193,7 @@ inherited frmOrder: TfrmOrder
     end
     inherited Panel4: TPanel
       Width = 688
-      Caption = #1057#1086#1089#1090#1072#1074' '#1079#1072#1082#1072#1079#1072
+      Caption = #1055#1086#1079#1080#1094#1080#1080' '#1079#1072#1082#1072#1079#1072' ('#1076#1074#1086#1081#1085#1086#1081' '#1097#1077#1083#1095#1086#1082'-'#1091#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1076#1072#1090#1091' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1103')'
     end
   end
   inherited QueryLeft: TpFIBDataSet

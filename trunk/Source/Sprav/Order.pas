@@ -10,6 +10,7 @@ uses
 
 type
   TfrmOrder = class(TfrmBaseDualList)
+    procedure DBGridEh2DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -21,6 +22,9 @@ var
   frmOrder: TfrmOrder;
 
 implementation
+
+uses
+  Fg_util, DataModule;
 
 {$R *.dfm}
 
@@ -39,6 +43,35 @@ end;
 function OrderDualListCreator(AOwner : TComponent; aActionList : TActionListForm) : TfrmBaseDualList;
 begin
   Result:=TfrmOrder.Create(aOwner, aActionList);
+end;
+
+procedure TfrmOrder.DBGridEh2DblClick(Sender: TObject);
+var
+  l_count_non_complete : Integer;
+begin
+  inherited;
+  // Пометить позицию заказа как выполненную
+  DBGridEh2.SetFocus;
+  if (DataSourceRight.DataSet.Active) and (not DataSourceRight.DataSet.IsEmpty) then
+    begin
+      if DataSourceRight.DataSet.FieldByName('fact_date').IsNull then
+        begin
+          DataSourceRight.DataSet.Edit;
+          DataSourceRight.DataSet.FieldByName('fact_date').AsDateTime:=Trunc(Now);
+          DataSourceRight.DataSet.Post;
+        end;
+      l_count_non_complete:=GetResBindSqlFib(dm.oDbAdv,'select count(*) Result from order_comp where id_order=:id_order and fact_date is null',
+                                    ['id_order'],[DataSourceRight.DataSet.FieldByName('id_order').AsInteger]);
+      // Все позиции заказа выполнены
+      // Пометить выполненным весь заказ
+      if (l_count_non_complete=0) and (DataSourceLeft.DataSet.FieldByName('fact_date_order').IsNull) then
+        begin
+          DataSourceLeft.DataSet.Edit;
+          DataSourceLeft.DataSet.FieldByName('fact_date_order').AsDateTime:=Trunc(Now);
+          DataSourceLeft.DataSet.FieldByName('id_spr_state_order').AsInteger:=3;
+          DataSourceLeft.DataSet.Post;
+        end;
+    end;
 end;
 
 initialization
