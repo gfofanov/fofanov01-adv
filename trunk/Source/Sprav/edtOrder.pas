@@ -128,7 +128,7 @@ begin
     doNew  : begin
                Caption:='Добавление заказа';
                // Получить следующий номер заказа
-               l_num_order:=GetResSqlFIB(dm.oDbAdv,'select max(num_order)+1 Result from order_doc');
+               l_num_order:=GetResSqlFIB(dm.oDbAdv,'select coalesce(max(num_order),0)+1 Result from order_doc');
                if l_num_order=null then
                  DataSource.DataSet.FieldByName('num_order').AsInteger:=1
                else

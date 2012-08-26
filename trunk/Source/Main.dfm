@@ -130,6 +130,12 @@ inherited frmMain: TfrmMain
       Hint = #1047#1072#1082#1072#1079#1099'|'#1047#1072#1082#1072#1079#1099' '#1082#1083#1080#1077#1085#1090#1086#1074
       OnExecute = actOrderExecute
     end
+    object actSprType_Order: TAction
+      Category = 'Sprav'
+      Caption = #1042#1080#1076#1099' '#1079#1072#1082#1072#1079#1086#1074
+      Hint = #1042#1080#1076#1099' '#1079#1072#1082#1072#1079#1086#1074'|'#1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1074#1080#1076#1086#1074' '#1079#1072#1082#1072#1079#1086#1074
+      OnExecute = actSprType_OrderExecute
+    end
   end
   object MainMenu1: TMainMenu
     Left = 192
@@ -147,6 +153,9 @@ inherited frmMain: TfrmMain
       end
       object N9: TMenuItem
         Action = actSprMat_Price
+      end
+      object N12: TMenuItem
+        Action = actSprType_Order
       end
     end
     object N4: TMenuItem

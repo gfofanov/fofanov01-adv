@@ -35,8 +35,8 @@ type
 const
 
   MaxType=35; // Количество форм в проекте
-  MaxDualListType=7; // Количество двойных форм в проекте
-  MaxTripleListType=5; // Количество тройных форм в проекте
+  MaxDualListType=10; // Количество двойных форм в проекте
+  MaxTripleListType=10; // Количество тройных форм в проекте
   MaxSimpleFilter=35; // Количество фильтров в проекте
 
   // Типы объектов
@@ -52,6 +52,7 @@ const
   cMat_Price = 7; // Цена материала или работы
   cOrder_Doc = 8; // Заказ
   cOrder_Comp = 9; // Состав заказов
+  cType_Order = 10; // Вид заказа
 
   // Двойные формы
 
@@ -77,6 +78,7 @@ const
   cSimpleFilterMat_Price = 7;
   cSimpleFilterOrder = 8;
   cSimpleFilterOrder_Comp = 9;
+  cSimpleFilterType_Order = 10;
 
 implementation
 
