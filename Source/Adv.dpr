@@ -36,7 +36,9 @@ uses
   FilterOrder in 'Filters\FilterOrder.pas' {frmFilterOrder},
   FilterOrder_Comp in 'Filters\FilterOrder_Comp.pas' {frmFilterOrder_Comp},
   edtOrder in 'Sprav\edtOrder.pas' {frmEdtOrder},
-  edtOrder_Comp in 'Sprav\edtOrder_Comp.pas' {frmEdtOrder_Comp};
+  edtOrder_Comp in 'Sprav\edtOrder_Comp.pas' {frmEdtOrder_Comp},
+  SprType_Order in 'Sprav\SprType_Order.pas' {frmSprType_Order},
+  edtSprType_Order in 'Sprav\edtSprType_Order.pas' {frmEdtSprType_Order};
 
 {$R *.res}
 

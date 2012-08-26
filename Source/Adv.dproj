@@ -123,6 +123,9 @@
     <DCCReference Include="Sprav\edtSprSide.pas">
       <Form>frmEdtSprSide</Form>
     </DCCReference>
+    <DCCReference Include="Sprav\edtSprType_Order.pas">
+      <Form>frmEdtSprType_Order</Form>
+    </DCCReference>
     <DCCReference Include="Sprav\Order.pas">
       <Form>frmOrder</Form>
     </DCCReference>
@@ -137,6 +140,9 @@
     </DCCReference>
     <DCCReference Include="Sprav\SprMeasure.pas">
       <Form>frmSprMeasure</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\SprType_Order.pas">
+      <Form>frmSprType_Order</Form>
     </DCCReference>
     <DCCReference Include="Users.pas">
       <Form>frmUsers</Form>

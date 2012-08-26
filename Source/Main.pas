@@ -38,6 +38,8 @@ type
     N9: TMenuItem;
     actOrder: TAction;
     N11: TMenuItem;
+    actSprType_Order: TAction;
+    N12: TMenuItem;
     procedure actExitExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -47,6 +49,7 @@ type
     procedure actSprMeasureExecute(Sender: TObject);
     procedure actSprMat_PriceExecute(Sender: TObject);
     procedure actOrderExecute(Sender: TObject);
+    procedure actSprType_OrderExecute(Sender: TObject);
   private
     { Private declarations }
     OldHint : TNotifyEvent;
@@ -178,6 +181,23 @@ begin
 {begin
   inherited;
   OpenListForm(Sender, cMeasure);}
+end;
+
+procedure TfrmMain.actSprType_OrderExecute(Sender: TObject);
+  var
+    bForm : TfrmBaseList;
+begin
+  bForm:=BrokerListForm.CreateList(Self, cType_Order, doViewList);
+  if bForm=nil then
+    Exit;
+  try
+   bForm.ShowModal;
+  finally
+   FreeAndNil(bForm);
+  end;
+{begin
+  inherited;
+  OpenListForm(Sender, cType_Order);}
 end;
 
 end.
