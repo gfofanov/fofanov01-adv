@@ -164,7 +164,7 @@ procedure TfrmEdtOrder_Comp.fnedtName_FileChange(Sender: TObject);
 begin
   inherited;
   if DataSource.DataSet.State in [dsEdit, dsInsert] then
-    DataSource.DataSet.FieldByName('name_file').AsString:=fnedtName_File.FileName;  
+    DataSource.DataSet.FieldByName('name_file').AsString:=ExtractFileName(fnedtName_File.FileName);  
 end;
 
 //******************* Order_CompFormCreator *************************

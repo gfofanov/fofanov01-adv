@@ -270,6 +270,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     currency = True
     DataField = 'sum_order'
     DataSource = DataSource
+    Enabled = False
     EditButtons = <>
     ReadOnly = True
     ShowHint = True
@@ -298,6 +299,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     currency = True
     DataField = 'sum_unpaid'
     DataSource = DataSource
+    Enabled = False
     EditButtons = <>
     ReadOnly = True
     ShowHint = True
@@ -425,6 +427,7 @@ inherited frmEdtOrder: TfrmEdtOrder
     currency = True
     DataField = 'sum_discount'
     DataSource = DataSource
+    Enabled = False
     EditButtons = <>
     ReadOnly = True
     ShowHint = True
