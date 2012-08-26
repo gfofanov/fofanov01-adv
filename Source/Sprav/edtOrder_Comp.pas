@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, BaseEditForm, DB, Placemnt, StdCtrls, Buttons, ExtCtrls, fg_Const,
-  pFIBDataSet, DBGridEh, Mask, DBCtrlsEh, DBLookupEh, DBCtrls;
+  pFIBDataSet, DBGridEh, Mask, DBCtrlsEh, DBLookupEh, DBCtrls, sMaskEdit,
+  sCustomComboEdit, sTooledit;
 
 type
   TfrmEdtOrder_Comp = class(TfrmBaseEditForm)
@@ -23,7 +24,6 @@ type
     lblPrice_Mat: TLabel;
     dbedtPrice_Mat: TDBNumberEditEh;
     lblName_File: TLabel;
-    dbedtName_File: TDBEdit;
     lblSizeX: TLabel;
     dbedtSizeX: TDBNumberEditEh;
     lblSizeY: TLabel;
@@ -36,10 +36,14 @@ type
     lblComment_Order: TLabel;
     dbmmoComment_Order: TDBMemo;
     dbcbbQuality_Print: TDBComboBoxEh;
+    fnedtName_File: TsFilenameEdit;
+    lblName_Measure: TLabel;
+    dbedtName_Measure: TDBEdit;
     procedure dbedtSizeXChange(Sender: TObject);
     procedure dbedtSizeYChange(Sender: TObject);
     procedure dbedtQuant_MatChange(Sender: TObject);
     procedure dbedtPrice_MatChange(Sender: TObject);
+    procedure fnedtName_FileChange(Sender: TObject);
   private
     { Private declarations }
     l_discount_perc : Double;
@@ -65,11 +69,18 @@ uses
 procedure PostOrder_Comp(aForm : TfrmBaseEditForm; aFromForm : TForm);
 var
   form_Order_Doc : TfrmOrder;
+  //formEdtOrder_Comp: TfrmEdtOrder_Comp;
 begin
-  if (aFromForm is TfrmOrder) then
+  if (aFromForm is TfrmOrder) and (aForm is TfrmEdtOrder_Comp) then
     begin
       form_Order_Doc:=TfrmOrder(aFromForm);
+      //formEdtOrder_Comp:=TfrmEdtOrder_Comp(aForm);
+
+      form_Order_Doc.DBGridEh1.SaveBookmark;
+      form_Order_Doc.DBGridEh2.SaveBookmark;
       form_Order_Doc.QueryLeft.Refresh;
+      form_Order_Doc.DBGridEh1.RestoreBookmark;
+      form_Order_Doc.DBGridEh2.RestoreBookmark;
     end;
 end;
 
@@ -80,12 +91,18 @@ begin
 end;
 
 procedure TfrmEdtOrder_Comp.Calc_Sum;
+var
+  l_size_area : Double;
 begin
   if (DataSource.DataSet.State in [dsEdit, dsInsert]) and (DataSource.DataSet.FieldByName('id_spr_mat').AsInteger<>0) then
     begin
-      DataSource.DataSet.FieldByName('sum_mat').AsCurrency:=DataSource.DataSet.FieldByName('quant_mat').AsFloat*DataSource.DataSet.FieldByName('price_mat').AsCurrency/dsSpr_Mat.DataSet.FieldByName('koef_price').AsInteger;
-      DataSource.DataSet.FieldByName('sum_discount').AsCurrency:=DataSource.DataSet.FieldByName('sum_mat').AsCurrency*l_discount_perc;
-      DataSource.DataSet.FieldByName('sum_itog').AsCurrency:=DataSource.DataSet.FieldByName('sum_mat').AsCurrency-DataSource.DataSet.FieldByName('sum_mat').AsCurrency*l_discount_perc;
+      if DataSource.DataSet.FieldByName('size_area').AsFloat=0 then
+        l_size_area:=1
+      else
+        l_size_area:=DataSource.DataSet.FieldByName('size_area').AsFloat;
+      DataSource.DataSet.FieldByName('sum_mat').AsCurrency:=DataSource.DataSet.FieldByName('quant_mat').AsFloat*DataSource.DataSet.FieldByName('price_mat').AsCurrency/dsSpr_Mat.DataSet.FieldByName('koef_price').AsInteger*l_size_area;
+      DataSource.DataSet.FieldByName('sum_discount').AsCurrency:=DataSource.DataSet.FieldByName('sum_mat').AsCurrency*l_discount_perc/100;
+      DataSource.DataSet.FieldByName('sum_itog').AsCurrency:=DataSource.DataSet.FieldByName('sum_mat').AsCurrency-DataSource.DataSet.FieldByName('sum_discount').AsCurrency;
     end;
 end;
 
@@ -106,9 +123,12 @@ begin
   case ActionForm of
     doView : begin
                Caption:='Просмотр информации о составе заказа';
+               fnedtName_File.FileName:=DataSource.DataSet.FieldByName('name_file').AsString;
+               fnedtName_File.ReadOnly:=True;
              end;
     doEdit : begin
                Caption:='Редактирование состава заказа';
+               fnedtName_File.FileName:=DataSource.DataSet.FieldByName('name_file').AsString;
              end;
     doNew  : begin
                Caption:='Добавление состава заказа';
@@ -138,6 +158,13 @@ procedure TfrmEdtOrder_Comp.dbedtSizeYChange(Sender: TObject);
 begin
   inherited;
   Calc_Size_Area;
+end;
+
+procedure TfrmEdtOrder_Comp.fnedtName_FileChange(Sender: TObject);
+begin
+  inherited;
+  if DataSource.DataSet.State in [dsEdit, dsInsert] then
+    DataSource.DataSet.FieldByName('name_file').AsString:=fnedtName_File.FileName;  
 end;
 
 //******************* Order_CompFormCreator *************************

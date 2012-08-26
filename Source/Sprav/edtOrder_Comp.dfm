@@ -108,7 +108,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     FocusControl = dbedtSizeX
   end
   object lblSizeY: TLabel [9]
-    Left = 220
+    Left = 236
     Top = 168
     Width = 62
     Height = 16
@@ -116,7 +116,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     FocusControl = dbedtSizeY
   end
   object lblSize_Area: TLabel [10]
-    Left = 463
+    Left = 479
     Top = 168
     Width = 58
     Height = 16
@@ -145,39 +145,50 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     Height = 16
     Caption = #1050#1086#1084#1084#1077#1085#1090#1072#1088#1080#1081
   end
+  object lblName_Measure: TLabel [14]
+    Left = 466
+    Top = 50
+    Width = 97
+    Height = 16
+    Caption = #1045#1076'. '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+  end
   inherited btnOk: TBitBtn
     Top = 316
-    TabOrder = 13
+    TabOrder = 14
   end
   inherited btnCancel: TBitBtn
     Left = 585
     Top = 316
-    TabOrder = 14
+    TabOrder = 15
   end
   inherited btnClose: TBitBtn
     Left = 291
     Top = 318
-    TabOrder = 15
+    TabOrder = 16
   end
-  object dbcbbSpr_Mat: TDBLookupComboboxEh [17]
+  object dbcbbSpr_Mat: TDBLookupComboboxEh [18]
     Left = 112
     Top = 14
     Width = 562
     Height = 24
     DataField = 'id_spr_mat'
     DataSource = DataSource
+    DropDownBox.ColumnDefValues.ToolTips = True
     DropDownBox.Columns = <
       item
         FieldName = 'NAME_MAT'
         Title.Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+        Title.ToolTips = True
       end
       item
-        FieldName = 'NAME_MEASURE'
+        FieldName = 'NAME_MEASURE_SHORT'
         Title.Caption = #1045#1076'. '#1080#1079#1084#1077#1088#1077#1085#1080#1103
+        Title.ToolTips = True
       end
       item
-        FieldName = 'NAME_MEASURE_PRICE'
+        FieldName = 'NAME_MEASURE_PRICE_SHORT'
         Title.Caption = #1045#1076'. '#1080#1079#1084#1077#1088#1077#1085#1080#1103' '#1094#1077#1085#1099
+        Title.ToolTips = True
       end>
     DropDownBox.ListSource = dsSpr_Mat
     DropDownBox.Options = [dlgColumnResizeEh, dlgRowLinesEh]
@@ -189,9 +200,10 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     ListSource = dsSpr_Mat
     ShowHint = True
     TabOrder = 0
+    Tooltips = True
     Visible = True
   end
-  object dbedtSum_Mat: TDBNumberEditEh [18]
+  object dbedtSum_Mat: TDBNumberEditEh [19]
     Left = 112
     Top = 88
     Width = 94
@@ -200,11 +212,12 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataField = 'sum_mat'
     DataSource = DataSource
     EditButtons = <>
+    ReadOnly = True
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 4
     Visible = True
   end
-  object dbedtSum_Discount: TDBNumberEditEh [19]
+  object dbedtSum_Discount: TDBNumberEditEh [20]
     Left = 342
     Top = 88
     Width = 107
@@ -213,11 +226,12 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataField = 'sum_discount'
     DataSource = DataSource
     EditButtons = <>
+    ReadOnly = True
     ShowHint = True
-    TabOrder = 4
+    TabOrder = 5
     Visible = True
   end
-  object dbedtSum_Itog: TDBNumberEditEh [20]
+  object dbedtSum_Itog: TDBNumberEditEh [21]
     Left = 576
     Top = 88
     Width = 98
@@ -226,11 +240,12 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataField = 'sum_itog'
     DataSource = DataSource
     EditButtons = <>
+    ReadOnly = True
     ShowHint = True
-    TabOrder = 5
+    TabOrder = 6
     Visible = True
   end
-  object dbedtQuant_Mat: TDBNumberEditEh [21]
+  object dbedtQuant_Mat: TDBNumberEditEh [22]
     Left = 112
     Top = 50
     Width = 94
@@ -245,7 +260,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     Visible = True
     OnChange = dbedtQuant_MatChange
   end
-  object dbedtPrice_Mat: TDBNumberEditEh [22]
+  object dbedtPrice_Mat: TDBNumberEditEh [23]
     Left = 353
     Top = 50
     Width = 107
@@ -259,15 +274,6 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     Visible = True
     OnChange = dbedtPrice_MatChange
   end
-  object dbedtName_File: TDBEdit [23]
-    Left = 112
-    Top = 128
-    Width = 562
-    Height = 24
-    DataField = 'Name_File'
-    DataSource = DataSource
-    TabOrder = 6
-  end
   object dbedtSizeX: TDBNumberEditEh [24]
     Left = 112
     Top = 168
@@ -278,7 +284,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataSource = DataSource
     EditButtons = <>
     ShowHint = True
-    TabOrder = 7
+    TabOrder = 8
     Visible = True
     OnChange = dbedtSizeXChange
   end
@@ -292,7 +298,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataSource = DataSource
     EditButtons = <>
     ShowHint = True
-    TabOrder = 8
+    TabOrder = 9
     Visible = True
     OnChange = dbedtSizeYChange
   end
@@ -305,8 +311,9 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataField = 'size_Area'
     DataSource = DataSource
     EditButtons = <>
+    ReadOnly = True
     ShowHint = True
-    TabOrder = 9
+    TabOrder = 10
     Visible = True
   end
   object dbedtDate_Order: TDBDateTimeEditEh [27]
@@ -319,7 +326,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     EditButtons = <>
     Kind = dtkDateEh
     ShowHint = True
-    TabOrder = 11
+    TabOrder = 12
     Visible = True
   end
   object dbmmoComment_Order: TDBMemo [28]
@@ -330,7 +337,7 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
     DataField = 'comment_line'
     DataSource = DataSource
     ScrollBars = ssVertical
-    TabOrder = 12
+    TabOrder = 13
   end
   object dbcbbQuality_Print: TDBComboBoxEh [29]
     Left = 126
@@ -346,9 +353,43 @@ inherited frmEdtOrder_Comp: TfrmEdtOrder_Comp
       '540'
       '720')
     ShowHint = True
-    TabOrder = 10
+    TabOrder = 11
     Tooltips = True
     Visible = True
+  end
+  object fnedtName_File: TsFilenameEdit [30]
+    Left = 112
+    Top = 128
+    Width = 562
+    Height = 21
+    AutoSize = False
+    MaxLength = 255
+    TabOrder = 7
+    OnChange = fnedtName_FileChange
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'Tahoma'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+    SkinData.SkinSection = 'EDIT'
+    GlyphMode.Blend = 0
+    GlyphMode.Grayed = False
+    FilterIndex = 2
+    Filter = 'All files (*.*)|*.*|Jpeg files (*.jpg)|*.jpg'
+  end
+  object dbedtName_Measure: TDBEdit [31]
+    Left = 576
+    Top = 50
+    Width = 98
+    Height = 24
+    DataField = 'name_measure_price_short'
+    DataSource = DataSource
+    ReadOnly = True
+    TabOrder = 3
   end
   inherited FormStorage: TFormStorage
     Left = 128
