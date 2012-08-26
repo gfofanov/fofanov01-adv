@@ -32,12 +32,21 @@ type
     N5: TMenuItem;
     actContractPrice_Contract: TAction;
     N6: TMenuItem;
+    actSprMeasure: TAction;
+    N7: TMenuItem;
+    actSprMat_Price: TAction;
+    N9: TMenuItem;
+    actOrder: TAction;
+    N11: TMenuItem;
     procedure actExitExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure actSprContractorExecute(Sender: TObject);
     procedure actSprContractExecute(Sender: TObject);
     procedure actAdvSideExecute(Sender: TObject);
+    procedure actSprMeasureExecute(Sender: TObject);
+    procedure actSprMat_PriceExecute(Sender: TObject);
+    procedure actOrderExecute(Sender: TObject);
   private
     { Private declarations }
     OldHint : TNotifyEvent;
@@ -68,6 +77,12 @@ procedure TfrmMain.actExitExecute(Sender: TObject);
 begin
   inherited;
   Close;
+end;
+
+procedure TfrmMain.actOrderExecute(Sender: TObject);
+begin
+  inherited;
+  OpenDualListForm(Sender, cOrder);
 end;
 
 procedure TfrmMain.DisplayHint(Sender: TObject);
@@ -140,6 +155,29 @@ procedure TfrmMain.actSprContractorExecute(Sender: TObject);
 begin
   inherited;
   OpenListForm(Sender, cContractor);
+end;
+
+procedure TfrmMain.actSprMat_PriceExecute(Sender: TObject);
+begin
+  inherited;
+  OpenDualListForm(Sender, cSprMat_Price);
+end;
+
+procedure TfrmMain.actSprMeasureExecute(Sender: TObject);
+  var
+    bForm : TfrmBaseList;
+begin
+  bForm:=BrokerListForm.CreateList(Self, cMeasure, doViewList);
+  if bForm=nil then
+    Exit;
+  try
+   bForm.ShowModal;
+  finally
+   FreeAndNil(bForm);
+  end;
+{begin
+  inherited;
+  OpenListForm(Sender, cMeasure);}
 end;
 
 end.

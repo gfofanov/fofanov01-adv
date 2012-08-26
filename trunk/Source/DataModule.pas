@@ -4,13 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  ImgList, Registry, db, RxStrUtils, FIBDatabase, pFIBDatabase;
+  ImgList, Registry, db, RxStrUtils, FIBDatabase, pFIBDatabase, FIBDataSet,
+  pFIBDataSet;
 
 type
   Tdm = class(TDataModule)
     imgProject: TImageList;
     oDbAdv: TpFIBDatabase;
     pFIBTransaction1: TpFIBTransaction;
+    qrType_Order: TpFIBDataSet;
+    qrState_Order: TpFIBDataSet;
   private
     { Private declarations }
   public

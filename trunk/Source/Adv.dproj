@@ -64,6 +64,12 @@
     <DCCReference Include="Filters\FilterContractor.pas">
       <Form>frmFilterContractor</Form>
     </DCCReference>
+    <DCCReference Include="Filters\FilterOrder.pas">
+      <Form>frmFilterOrder</Form>
+    </DCCReference>
+    <DCCReference Include="Filters\FilterOrder_Comp.pas">
+      <Form>frmFilterOrder_Comp</Form>
+    </DCCReference>
     <DCCReference Include="Filters\FilterSide.pas">
       <Form>frmFilterSide</Form>
     </DCCReference>
@@ -99,20 +105,35 @@
     <DCCReference Include="Sprav\edtAdv.pas">
       <Form>frmEdtAdv</Form>
     </DCCReference>
+    <DCCReference Include="Sprav\edtOrder.pas">
+      <Form>frmEdtOrder</Form>
+    </DCCReference>
     <DCCReference Include="Sprav\edtSprContract.pas">
       <Form>frmEdtSprContract</Form>
     </DCCReference>
     <DCCReference Include="Sprav\edtSprContractor.pas">
       <Form>frmEdtSprContractor</Form>
     </DCCReference>
+    <DCCReference Include="Sprav\edtSprMeasure.pas">
+      <Form>frmEdtSprMeasure</Form>
+    </DCCReference>
     <DCCReference Include="Sprav\edtSprSide.pas">
       <Form>frmEdtSprSide</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\Order.pas">
+      <Form>frmOrder</Form>
     </DCCReference>
     <DCCReference Include="Sprav\SprContract.pas">
       <Form>frmSprContract</Form>
     </DCCReference>
     <DCCReference Include="Sprav\SprContractor.pas">
       <Form>frmSprContractor</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\SprMat_Price.pas">
+      <Form>frmSprMat_Price</Form>
+    </DCCReference>
+    <DCCReference Include="Sprav\SprMeasure.pas">
+      <Form>frmSprMeasure</Form>
     </DCCReference>
     <DCCReference Include="Users.pas">
       <Form>frmUsers</Form>
