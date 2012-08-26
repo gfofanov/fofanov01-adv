@@ -11,6 +11,7 @@ uses
 type
   TfrmOrder = class(TfrmBaseDualList)
     procedure DBGridEh2DblClick(Sender: TObject);
+    procedure actDeleteExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,6 +30,13 @@ uses
 {$R *.dfm}
 
 { TfrmOrder }
+
+procedure TfrmOrder.actDeleteExecute(Sender: TObject);
+begin
+  inherited;
+  if DBGridEh2.Focused then
+    QueryLeft.Refresh;
+end;
 
 constructor TfrmOrder.Create(aOwner: TComponent; aActionList: TActionListForm);
 begin

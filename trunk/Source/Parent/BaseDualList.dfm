@@ -135,6 +135,7 @@ inherited frmBaseDualList: TfrmBaseDualList
       FooterFont.Height = -13
       FooterFont.Name = 'MS Sans Serif'
       FooterFont.Style = []
+      IndicatorOptions = [gioShowRowIndicatorEh]
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
       OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghIncSearch, dghPreferIncSearch, dghColumnResize, dghColumnMove]
       ParentFont = False
@@ -206,6 +207,7 @@ inherited frmBaseDualList: TfrmBaseDualList
       FooterFont.Height = -13
       FooterFont.Name = 'MS Sans Serif'
       FooterFont.Style = []
+      IndicatorOptions = [gioShowRowIndicatorEh]
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
       OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghIncSearch, dghPreferIncSearch, dghColumnResize, dghColumnMove]
       ParentFont = False
@@ -453,6 +455,7 @@ inherited frmBaseDualList: TfrmBaseDualList
     Left = 136
     Top = 152
     oUseSelectForLock = True
+    oRefreshAfterDelete = True
     oStartTransaction = False
   end
   object QueryRight: TpFIBDataSet
@@ -469,6 +472,7 @@ inherited frmBaseDualList: TfrmBaseDualList
     Left = 480
     Top = 152
     oUseSelectForLock = True
+    oRefreshAfterDelete = True
     oStartTransaction = False
   end
 end

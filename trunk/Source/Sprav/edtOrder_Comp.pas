@@ -36,10 +36,10 @@ type
     lblComment_Order: TLabel;
     dbmmoComment_Order: TDBMemo;
     dbcbbQuality_Print: TDBComboBoxEh;
-    procedure dbedtQuant_MatChange(Sender: TObject);
-    procedure dbedtPrice_MatChange(Sender: TObject);
     procedure dbedtSizeXChange(Sender: TObject);
     procedure dbedtSizeYChange(Sender: TObject);
+    procedure dbedtQuant_MatChange(Sender: TObject);
+    procedure dbedtPrice_MatChange(Sender: TObject);
   private
     { Private declarations }
     l_discount_perc : Double;
@@ -56,11 +56,22 @@ var
 implementation
 
 uses
-  DataModule, Fg_util;
+  DataModule, Fg_util, Order;
 
 {$R *.dfm}
 
 { TfrmEdtOrder_Comp }
+
+procedure PostOrder_Comp(aForm : TfrmBaseEditForm; aFromForm : TForm);
+var
+  form_Order_Doc : TfrmOrder;
+begin
+  if (aFromForm is TfrmOrder) then
+    begin
+      form_Order_Doc:=TfrmOrder(aFromForm);
+      form_Order_Doc.QueryLeft.Refresh;
+    end;
+end;
 
 procedure TfrmEdtOrder_Comp.Calc_Size_Area;
 begin
@@ -73,8 +84,8 @@ begin
   if (DataSource.DataSet.State in [dsEdit, dsInsert]) and (DataSource.DataSet.FieldByName('id_spr_mat').AsInteger<>0) then
     begin
       DataSource.DataSet.FieldByName('sum_mat').AsCurrency:=DataSource.DataSet.FieldByName('quant_mat').AsFloat*DataSource.DataSet.FieldByName('price_mat').AsCurrency/dsSpr_Mat.DataSet.FieldByName('koef_price').AsInteger;
-      DataSource.DataSet.FieldByName('sum_discount').AsCurrency:=0;
-      DataSource.DataSet.FieldByName('sum_itog').AsCurrency:=DataSource.DataSet.FieldByName('sum_mat').AsCurrency;
+      DataSource.DataSet.FieldByName('sum_discount').AsCurrency:=DataSource.DataSet.FieldByName('sum_mat').AsCurrency*l_discount_perc;
+      DataSource.DataSet.FieldByName('sum_itog').AsCurrency:=DataSource.DataSet.FieldByName('sum_mat').AsCurrency-DataSource.DataSet.FieldByName('sum_mat').AsCurrency*l_discount_perc;
     end;
 end;
 
@@ -86,6 +97,7 @@ begin
   inherited Create(AOwner, ActionForm, Query);
   SetLength(FieldsRecord,1);
   FieldsRecord[0]:='quant_mat';
+  AfterPost := PostOrder_Comp;
   if not dsSpr_Mat.DataSet.Active then
     dsSpr_Mat.DataSet.Open;
   l_discount_perc:=GetResBindSqlFib(dm.oDbAdv,'select discount_perc Result from order_doc where id_order=:id_order',

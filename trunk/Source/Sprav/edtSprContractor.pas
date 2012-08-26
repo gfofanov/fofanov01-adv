@@ -17,6 +17,8 @@ type
     DBEdit3: TDBEdit;
     Label4: TLabel;
     DBComboBoxEh1: TDBComboBoxEh;
+    lblPhone: TLabel;
+    dbedtPhone: TDBEdit;
   private
     { Private declarations }
   public

@@ -41,7 +41,7 @@ begin
     end;
   if edtName_Contractor.Text<>'' then
     begin
-      FilterString:=FilterString+' and upper(order_doc.name_customer) like '#39+AnsiUpperCase(edtName_Contractor.Text)+#39;
+      FilterString:=FilterString+' and upper(c.name_contractor) like '#39+AnsiUpperCase(edtName_Contractor.Text)+#39;
     end;
 end;
 
