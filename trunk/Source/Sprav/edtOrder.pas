@@ -13,8 +13,6 @@ type
     dbedtNum_Order: TDBEdit;
     lblDate_Order: TLabel;
     dbedtDate_Order: TDBDateTimeEditEh;
-    lblPhone_Customer: TLabel;
-    dbedtPhone_Customer: TDBEdit;
     lblType_Order: TLabel;
     dbcbbType_Order: TDBLookupComboboxEh;
     dsType_Order: TDataSource;
@@ -34,7 +32,7 @@ type
     lblFact_Date_Order: TLabel;
     dbedtFact_Date_Order: TDBDateTimeEditEh;
     grpContractor: TGroupBox;
-    btnChooseContract: TButton;
+    btnChooseContractor: TButton;
     lblInn: TLabel;
     dbedtInn: TDBEdit;
     lblKpp: TLabel;
@@ -45,8 +43,15 @@ type
     dbedtSum_Discount: TDBNumberEditEh;
     lblDiscount_Perc: TLabel;
     dbedtDiscount_Perc: TDBNumberEditEh;
-    procedure btnChooseContractClick(Sender: TObject);
+    lblAlert: TLabel;
+    dbchkIs_Cash: TDBCheckBox;
+    lblPlan_Date_Pay: TLabel;
+    dbedtPlan_Date_Pay: TDBDateTimeEditEh;
+    lblSum_wo_discount: TLabel;
+    dbedtSum_wo_discount: TDBNumberEditEh;
+    procedure btnChooseContractorClick(Sender: TObject);
     procedure dbedtSum_PaidChange(Sender: TObject);
+    procedure dbcbbType_OrderChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,7 +71,7 @@ uses
 
 { TfrmEdtOrder }
 
-procedure TfrmEdtOrder.btnChooseContractClick(Sender: TObject);
+procedure TfrmEdtOrder.btnChooseContractorClick(Sender: TObject);
   var
     id_contractor : Longint;
     bForm : TfrmBaseList;
@@ -102,7 +107,7 @@ begin
   finally
    bForm.Free;
   end;
-  dbedtPhone_Customer.SetFocus;
+  dbcbbType_Order.SetFocus;
 end;
 
 constructor TfrmEdtOrder.Create(aOwner: TComponent; ActionForm: TActionEditForm;
@@ -138,6 +143,21 @@ begin
                DataSource.DataSet.FieldByName('id_spr_state_order').AsInteger:=dsState_Order.DataSet.FieldByName('id_spr_state_order').AsInteger;
              end;
   end;
+end;
+
+procedure TfrmEdtOrder.dbcbbType_OrderChange(Sender: TObject);
+begin
+  inherited;
+  if dsType_Order.DataSet.FieldByName('is_no_comp').AsInteger=1 then
+    begin
+      dbedtSum_wo_discount.Enabled:=True;
+      dbedtSum_wo_discount.ReadOnly:=False;
+    end
+  else
+    begin
+      dbedtSum_wo_discount.Enabled:=False;
+      dbedtSum_wo_discount.ReadOnly:=True;
+    end;
 end;
 
 procedure TfrmEdtOrder.dbedtSum_PaidChange(Sender: TObject);

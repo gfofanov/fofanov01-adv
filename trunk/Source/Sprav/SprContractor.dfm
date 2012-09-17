@@ -48,6 +48,13 @@ inherited frmSprContractor: TfrmSprContractor
           Footers = <>
           Title.Caption = #1058#1080#1087' '#1082#1086#1085#1090#1088#1072#1075#1077#1085#1090#1072
           Width = 107
+        end
+        item
+          EditButtons = <>
+          FieldName = 'contact_person'
+          Footers = <>
+          Title.Caption = #1050#1086#1085#1090#1072#1082#1090#1085#1086#1077' '#1083#1080#1094#1086
+          Width = 99
         end>
     end
   end

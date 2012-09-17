@@ -13,6 +13,7 @@ type
     dbedtName_Type_Order: TDBEdit;
     lblName_Print: TLabel;
     dbedtName_Print: TDBEdit;
+    dbchkis_no_comp: TDBCheckBox;
   private
     { Private declarations }
   public

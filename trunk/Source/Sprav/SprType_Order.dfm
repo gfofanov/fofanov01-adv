@@ -18,6 +18,14 @@ inherited frmSprType_Order: TfrmSprType_Order
           Footers = <>
           Title.Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077' '#1076#1083#1103' '#1087#1077#1095#1072#1090#1080
           Width = 165
+        end
+        item
+          Checkboxes = True
+          EditButtons = <>
+          FieldName = 'is_no_comp'
+          Footers = <>
+          Title.Caption = #1053#1077#1090' '#1087#1086#1079#1080#1094#1080#1081' '#1079#1072#1082#1072#1079#1072
+          Width = 114
         end>
     end
   end

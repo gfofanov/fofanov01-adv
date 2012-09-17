@@ -6,12 +6,17 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, BaseDualList, DBGridEhGrouping, DB, FIBDataSet, pFIBDataSet, Menus,
   ActnList, Placemnt, RXSplit, GridsEh, DBGridEh, ExtCtrls, ComCtrls, ToolWin,
-  fg_Const;
+  fg_Const, DBCtrls, StdCtrls;
 
 type
   TfrmOrder = class(TfrmBaseDualList)
+    lblSum_Unpaid: TLabel;
+    dbtxtSum_unpaid: TDBText;
+    btn1: TToolButton;
     procedure DBGridEh2DblClick(Sender: TObject);
     procedure actDeleteExecute(Sender: TObject);
+    procedure DBGridEh1GetCellParams(Sender: TObject; Column: TColumnEh;
+      AFont: TFont; var Background: TColor; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -51,6 +56,14 @@ end;
 function OrderDualListCreator(AOwner : TComponent; aActionList : TActionListForm) : TfrmBaseDualList;
 begin
   Result:=TfrmOrder.Create(aOwner, aActionList);
+end;
+
+procedure TfrmOrder.DBGridEh1GetCellParams(Sender: TObject; Column: TColumnEh;
+  AFont: TFont; var Background: TColor; State: TGridDrawState);
+begin
+  inherited;
+  if QueryLeft.FieldByName('sum_unpaid').AsFloat>0 then
+    Background:=clRed;
 end;
 
 procedure TfrmOrder.DBGridEh2DblClick(Sender: TObject);
