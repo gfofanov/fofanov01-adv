@@ -8,7 +8,7 @@ object dm: Tdm
     Left = 128
     Top = 24
     Bitmap = {
-      494C0101140016000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010114001600100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -810,8 +810,7 @@ object dm: Tdm
   object oDbAdv: TpFIBDatabase
     DBName = 'localhost:D:\Projects\Adv\Base\ADV.FDB'
     DBParams.Strings = (
-      'user_name=sysdba'
-      'sql_role_name=')
+      'user_name=sysdba')
     DefaultTransaction = pFIBTransaction1
     SQLDialect = 3
     Timeout = 0
@@ -830,10 +829,7 @@ object dm: Tdm
   end
   object qrType_Order: TpFIBDataSet
     SelectSQL.Strings = (
-      'SELECT'
-      '    ID_SPR_TYPE_ORDER,'
-      '    NAME_TYPE_ORDER,'
-      '    NAME_PRINT'
+      'SELECT *'
       'FROM'
       '    SPR_TYPE_ORDER ')
     Transaction = pFIBTransaction1

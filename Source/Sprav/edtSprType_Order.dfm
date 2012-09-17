@@ -1,10 +1,10 @@
 inherited frmEdtSprType_Order: TfrmEdtSprType_Order
   Caption = 'frmEdtSprType_Order'
-  ClientHeight = 172
+  ClientHeight = 205
   PixelsPerInch = 96
   TextHeight = 16
   inherited Bevel1: TBevel
-    Top = 122
+    Top = 155
   end
   object lblName_Type_Order: TLabel [1]
     Left = 8
@@ -27,16 +27,16 @@ inherited frmEdtSprType_Order: TfrmEdtSprType_Order
     Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077#13#10#1076#1083#1103' '#1087#1077#1095#1072#1090#1080
   end
   inherited btnOk: TBitBtn
-    Top = 136
-    TabOrder = 2
-  end
-  inherited btnCancel: TBitBtn
-    Top = 136
+    Top = 169
     TabOrder = 3
   end
-  inherited btnClose: TBitBtn
-    Top = 138
+  inherited btnCancel: TBitBtn
+    Top = 169
     TabOrder = 4
+  end
+  inherited btnClose: TBitBtn
+    Top = 171
+    TabOrder = 5
   end
   object dbedtName_Type_Order: TDBEdit [6]
     Left = 184
@@ -56,12 +56,24 @@ inherited frmEdtSprType_Order: TfrmEdtSprType_Order
     DataSource = DataSource
     TabOrder = 1
   end
+  object dbchkis_no_comp: TDBCheckBox [8]
+    Left = 8
+    Top = 120
+    Width = 177
+    Height = 17
+    Caption = #1053#1077#1090' '#1087#1086#1079#1080#1094#1080#1081' '#1079#1072#1082#1072#1079#1072
+    DataField = 'is_no_comp'
+    DataSource = DataSource
+    TabOrder = 2
+    ValueChecked = '1'
+    ValueUnchecked = '0'
+  end
   inherited FormStorage: TFormStorage
-    Left = 80
-    Top = 128
+    Left = 112
+    Top = 152
   end
   inherited DataSource: TDataSource
-    Left = 120
-    Top = 128
+    Left = 152
+    Top = 152
   end
 end

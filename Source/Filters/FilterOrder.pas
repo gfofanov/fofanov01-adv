@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, BaseSimpleFilter, Placemnt, StdCtrls, ExtCtrls, Buttons, fg_Const;
+  Dialogs, BaseSimpleFilter, Placemnt, StdCtrls, ExtCtrls, Buttons, fg_Const,
+  Mask, sMaskEdit, sCustomComboEdit, sTooledit;
 
 type
   TfrmFilterOrder = class(TfrmBaseSimpleFilter)
@@ -15,9 +16,14 @@ type
     edtSum_Unpayment: TEdit;
     chkSum_Unpayment: TCheckBox;
     rgSum_Unpayment: TRadioGroup;
+    chkDate_Order: TCheckBox;
+    dedtDate_Order_Beg: TsDateEdit;
+    dedtDate_Order_End: TsDateEdit;
+    lbldate_order_end: TLabel;
     procedure btnOkClick(Sender: TObject); override;
     procedure chkFact_Date_OrderClick(Sender: TObject);
     procedure chkSum_UnpaymentClick(Sender: TObject);
+    procedure chkDate_OrderClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,6 +57,25 @@ begin
     case rgSum_Unpayment.ItemIndex of
       0 : FilterString:=FilterString+' and order_doc.sum_unpaid>'+edtSum_Unpayment.Text;
       1 : FilterString:=FilterString+' and order_doc.sum_unpaid>(order_doc.sum_order*'+edtSum_Unpayment.Text+'/100)';
+    end;
+  if chkDate_Order.Checked then
+    begin
+      FilterString:=FilterString+' and order_doc.date_order between '''+DateToStr(dedtDate_Order_Beg.Date)+''' and '''+DateToStr(dedtDate_Order_End.Date)+'''';
+    end;
+end;
+
+procedure TfrmFilterOrder.chkDate_OrderClick(Sender: TObject);
+begin
+  inherited;
+  if chkDate_Order.Checked then
+    begin
+      dedtDate_Order_Beg.Enabled:=True;
+      dedtDate_Order_End.Enabled:=True;
+    end
+  else
+    begin
+      dedtDate_Order_Beg.Enabled:=False;
+      dedtDate_Order_End.Enabled:=False;
     end;
 end;
 

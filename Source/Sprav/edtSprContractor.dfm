@@ -2,12 +2,12 @@ inherited frmEdtSprContractor: TfrmEdtSprContractor
   Left = 244
   Top = 194
   Caption = 'frmEdtSprContractor'
-  ClientHeight = 181
+  ClientHeight = 228
   ClientWidth = 508
   PixelsPerInch = 96
   TextHeight = 16
   inherited Bevel1: TBevel
-    Top = 131
+    Top = 178
     Width = 508
   end
   object Label1: TLabel [1]
@@ -60,22 +60,31 @@ inherited frmEdtSprContractor: TfrmEdtSprContractor
     Width = 60
     Height = 16
     Caption = #1058#1077#1083#1077#1092#1086#1085
+    FocusControl = dbedtPhone
+  end
+  object lblContact_Person: TLabel [6]
+    Left = 8
+    Top = 140
+    Width = 112
+    Height = 16
+    Caption = #1050#1086#1085#1090#1072#1082#1090#1085#1086#1077' '#1083#1080#1094#1086
+    FocusControl = dbedtContact_Person
   end
   inherited btnOk: TBitBtn
-    Top = 145
-    TabOrder = 5
+    Top = 192
+    TabOrder = 6
   end
   inherited btnCancel: TBitBtn
     Left = 410
-    Top = 145
-    TabOrder = 6
+    Top = 192
+    TabOrder = 7
   end
   inherited btnClose: TBitBtn
     Left = 206
-    Top = 147
-    TabOrder = 7
+    Top = 194
+    TabOrder = 8
   end
-  object DBEdit1: TDBEdit [9]
+  object DBEdit1: TDBEdit [10]
     Left = 121
     Top = 16
     Width = 174
@@ -84,7 +93,7 @@ inherited frmEdtSprContractor: TfrmEdtSprContractor
     DataSource = DataSource
     TabOrder = 0
   end
-  object DBEdit2: TDBEdit [10]
+  object DBEdit2: TDBEdit [11]
     Left = 379
     Top = 16
     Width = 121
@@ -93,7 +102,7 @@ inherited frmEdtSprContractor: TfrmEdtSprContractor
     DataSource = DataSource
     TabOrder = 1
   end
-  object DBEdit3: TDBEdit [11]
+  object DBEdit3: TDBEdit [12]
     Left = 121
     Top = 56
     Width = 378
@@ -102,7 +111,7 @@ inherited frmEdtSprContractor: TfrmEdtSprContractor
     DataSource = DataSource
     TabOrder = 2
   end
-  object DBComboBoxEh1: TDBComboBoxEh [12]
+  object DBComboBoxEh1: TDBComboBoxEh [13]
     Left = 57
     Top = 96
     Width = 174
@@ -121,7 +130,7 @@ inherited frmEdtSprContractor: TfrmEdtSprContractor
     Tooltips = True
     Visible = True
   end
-  object dbedtPhone: TDBEdit [13]
+  object dbedtPhone: TDBEdit [14]
     Left = 314
     Top = 96
     Width = 186
@@ -129,6 +138,15 @@ inherited frmEdtSprContractor: TfrmEdtSprContractor
     DataField = 'phone_contractor'
     DataSource = DataSource
     TabOrder = 4
+  end
+  object dbedtContact_Person: TDBEdit [15]
+    Left = 138
+    Top = 140
+    Width = 362
+    Height = 24
+    DataField = 'contact_person'
+    DataSource = DataSource
+    TabOrder = 5
   end
   inherited FormStorage: TFormStorage
     Left = 352

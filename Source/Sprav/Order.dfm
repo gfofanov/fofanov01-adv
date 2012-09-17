@@ -1,14 +1,59 @@
 inherited frmOrder: TfrmOrder
   Caption = #1047#1072#1082#1072#1079#1099' '#1080' '#1080#1093' '#1089#1086#1089#1090#1072#1074
+  ClientWidth = 821
   PixelsPerInch = 96
   TextHeight = 16
+  inherited ToolBar1: TToolBar
+    Width = 821
+    object btn1: TToolButton
+      Left = 224
+      Top = 0
+      Width = 8
+      Caption = 'btn1'
+      ImageIndex = 5
+      Style = tbsSeparator
+    end
+    object lblSum_Unpaid: TLabel
+      Left = 232
+      Top = 0
+      Width = 148
+      Height = 22
+      Caption = #1054#1089#1090#1072#1083#1086#1089#1100' '#1086#1087#1083#1072#1090#1080#1090#1100':'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object dbtxtSum_unpaid: TDBText
+      Left = 380
+      Top = 0
+      Width = 65
+      Height = 22
+      DataField = 'sum_all_unpaid'
+      DataSource = DataSourceLeft
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  inherited StatusBar1: TStatusBar
+    Width = 821
+  end
   inherited Panel1: TPanel
-    Width = 688
+    Width = 821
     Height = 281
     Align = alTop
     inherited DBGridEh1: TDBGridEh
-      Width = 688
+      Width = 821
       Height = 264
+      FooterRowCount = 1
+      SumList.Active = True
+      OnGetCellParams = DBGridEh1GetCellParams
       Columns = <
         item
           EditButtons = <>
@@ -31,26 +76,43 @@ inherited frmOrder: TfrmOrder
         end
         item
           EditButtons = <>
-          FieldName = 'PHONE_CUSTOMER'
-          Footers = <>
-          Title.Caption = #1058#1077#1083#1077#1092#1086#1085
-          Width = 148
-        end
-        item
-          EditButtons = <>
           FieldName = 'SUM_ORDER'
+          Footer.FieldName = 'sum_order'
+          Footer.Font.Charset = DEFAULT_CHARSET
+          Footer.Font.Color = clWindowText
+          Footer.Font.Height = -13
+          Footer.Font.Name = 'MS Sans Serif'
+          Footer.Font.Style = [fsBold]
+          Footer.ToolTips = True
+          Footer.ValueType = fvtSum
           Footers = <>
           Title.Caption = #1057#1091#1084#1084#1072' '#1079#1072#1082#1072#1079#1072
         end
         item
           EditButtons = <>
           FieldName = 'SUM_PAID'
+          Footer.FieldName = 'sum_paid'
+          Footer.Font.Charset = DEFAULT_CHARSET
+          Footer.Font.Color = clWindowText
+          Footer.Font.Height = -13
+          Footer.Font.Name = 'MS Sans Serif'
+          Footer.Font.Style = [fsBold]
+          Footer.ToolTips = True
+          Footer.ValueType = fvtSum
           Footers = <>
           Title.Caption = #1057#1091#1084#1084#1072' '#1086#1087#1083#1072#1095#1077#1085#1086
         end
         item
           EditButtons = <>
           FieldName = 'SUM_UNPAID'
+          Footer.FieldName = 'sum_unpaid'
+          Footer.Font.Charset = DEFAULT_CHARSET
+          Footer.Font.Color = clWindowText
+          Footer.Font.Height = -13
+          Footer.Font.Name = 'MS Sans Serif'
+          Footer.Font.Style = [fsBold]
+          Footer.ToolTips = True
+          Footer.ValueType = fvtSum
           Footers = <>
           Title.Caption = #1054#1089#1090#1072#1083#1086#1089#1100' '#1086#1087#1083#1072#1090#1080#1090#1100
         end
@@ -99,27 +161,61 @@ inherited frmOrder: TfrmOrder
           FieldName = 'discount_perc'
           Footers = <>
           Title.Caption = '% '#1089#1082#1080#1076#1082#1080
+        end
+        item
+          EditButtons = <>
+          FieldName = 'PHONE_CONTRACTOR'
+          Footers = <>
+          Title.Caption = #1058#1077#1083#1077#1092#1086#1085
+          Width = 148
+        end
+        item
+          EditButtons = <>
+          FieldName = 'contact_person'
+          Footers = <>
+          Title.Caption = #1050#1086#1085#1090#1072#1082#1090#1085#1086#1077' '#1083#1080#1094#1086
+          Width = 118
+        end
+        item
+          Checkboxes = True
+          EditButtons = <>
+          FieldName = 'is_cash'
+          Footers = <>
+          Title.Caption = #1053#1072#1083#1080#1095#1085#1099#1077
+        end
+        item
+          EditButtons = <>
+          FieldName = 'plan_date_pay'
+          Footers = <>
+          Title.Caption = #1055#1083#1072#1085'. '#1076#1072#1090#1072' '#1086#1087#1083#1072#1090#1099
+          Width = 77
+        end
+        item
+          EditButtons = <>
+          FieldName = 'sum_wo_discount'
+          Footers = <>
+          Title.Caption = #1057#1091#1084#1084#1072' '#1073#1077#1079' '#1089#1082#1080#1076#1082#1080
         end>
     end
     inherited Panel3: TPanel
-      Width = 688
+      Width = 821
       Caption = #1047#1072#1082#1072#1079#1099
     end
   end
   inherited RxSplitter1: TRxSplitter
     Left = 0
     Top = 310
-    Width = 688
+    Width = 821
     Height = 3
     Align = alTop
   end
   inherited Panel2: TPanel
     Left = 0
     Top = 313
-    Width = 688
+    Width = 821
     Height = 200
     inherited DBGridEh2: TDBGridEh
-      Width = 688
+      Width = 821
       Height = 183
       OnDblClick = DBGridEh2DblClick
       Columns = <
@@ -219,7 +315,7 @@ inherited frmOrder: TfrmOrder
         end>
     end
     inherited Panel4: TPanel
-      Width = 688
+      Width = 821
       Caption = #1055#1086#1079#1080#1094#1080#1080' '#1079#1072#1082#1072#1079#1072' ('#1076#1074#1086#1081#1085#1086#1081' '#1097#1077#1083#1095#1086#1082'-'#1091#1089#1090#1072#1085#1086#1074#1080#1090#1100' '#1076#1072#1090#1091' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1103')'
     end
   end
@@ -228,6 +324,7 @@ inherited frmOrder: TfrmOrder
       '-- frmOrder.QueryLeft'
       'select order_doc.*, t.name_type_order, s.name_status'
       '     , c.*'
+      ', (select sum(sum_unpaid) from order_doc) sum_all_unpaid'
       '  from order_doc, spr_type_order t, spr_state_order s'
       '     , contractor c'
       '  where 0=0'
